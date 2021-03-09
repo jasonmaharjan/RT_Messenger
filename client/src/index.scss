@@ -1,0 +1,17 @@
+@import "./components/sass/sass_variables.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-family: "ink free", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $background;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
