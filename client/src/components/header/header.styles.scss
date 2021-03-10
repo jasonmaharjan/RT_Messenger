@@ -19,11 +19,25 @@
   }
 
   &-link {
-    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    color: $grey-light;
     text-decoration: none;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: $grey-m;
+      transform: scale(1.2);
+    }
+
+    &:focus {
+      background-color: $grey-m;
+      transform: scale(1.2);
+    }
   }
 
   &-link:not(:last-child) {
-    padding-right: 2rem;
+    margin-right: 0.5rem;
   }
 }

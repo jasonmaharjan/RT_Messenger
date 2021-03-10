@@ -83,6 +83,13 @@ $ink-free: "ink free";
   color: $grey-light;
   font-family: inherit;
 
+  &-about {
+    margin-top: -50vh;
+    color: $grey-light;
+    font-family: inherit;
+    font-size: 1.25rem;
+  }
+
   &-p-highlight {
     color: $primary;
     text-decoration: underline;
