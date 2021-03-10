@@ -13,8 +13,8 @@ const Header = () => {
           Login
         </Link>
 
-        <Link className="header-link" to="/register">
-          Register
+        <Link className="header-link" to="/signup">
+          Signup
         </Link>
 
         <Link className="header-link" to="/about">
