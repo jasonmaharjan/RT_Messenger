@@ -2,11 +2,11 @@ import React from "react";
 
 import "./formInput.styles.scss";
 
-const formInput = () => {
+const formInput = ({ handleChange, ...otherProps }) => {
   return (
-    <section className="formInput">
-      <form></form>
-    </section>
+    <div className="form-group">
+      <input className="form-input" onChange={handleChange} {...otherProps} />
+    </div>
   );
 };
 
