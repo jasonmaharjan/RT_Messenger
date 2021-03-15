@@ -61,7 +61,7 @@ const Login = () => {
       <span className="text">
         {" "}
         Don't have an account? Sign up{" "}
-        <a href="/register" className="text-p-highlight">
+        <a href="/signup" className="text-p-highlight">
           here
         </a>
       </span>

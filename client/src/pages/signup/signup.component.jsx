@@ -89,7 +89,7 @@ const SignUp = () => {
       <span className="text">
         {" "}
         Already have an account? Sign in{" "}
-        <a href="/register" className="text-p-highlight">
+        <a href="/login" className="text-p-highlight">
           here
         </a>
       </span>

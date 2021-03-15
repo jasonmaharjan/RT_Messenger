@@ -1,0 +1,54 @@
+@import "../sass/styles.scss";
+
+.server-name {
+  height: 100%;
+  grid-row: 1 / 2;
+  font-size: 1.5rem;
+  border-bottom: 1px solid $primary;
+}
+
+.chatrooms-list {
+  grid-row: 1 /2;
+  margin: 0;
+  list-style-type: none;
+  padding: 1vw;
+
+  &-chatroom {
+    height: 4vw;
+    margin-bottom: 1vw;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+
+    &-name {
+      height: 100%;
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      font-family: inherit;
+      color: $grey-light;
+      border-radius: 0.5rem;
+      outline-style: none;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: #1c1b2193;
+        cursor: pointer;
+      }
+
+      &:focus {
+        background-color: #1c1b2193;
+      }
+    }
+  }
+}
+
+.btn-click {
+  position: absolute;
+  height: 90%;
+  top: 5%;
+  left: -2vw;
+  border-radius: 2rem;
+  width: 0.5rem;
+  background-color: $primary;
+}

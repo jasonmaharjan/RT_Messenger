@@ -1,0 +1,35 @@
+@import "../../components/sass/styles.scss";
+
+.content-chat {
+  color: $grey-light;
+  border-radius: 2rem;
+  background-color: $grey-m-dark;
+  margin: 0.5rem 5vw 0;
+  min-height: 85vh;
+  display: grid;
+  grid-template-columns:
+    [server-start]10% [server-end
+    chatroom-start] 20% [chatroom-end chat-start] 55% [chat-end members-start] 1fr [members-end];
+}
+
+.server-container {
+  grid-column: server-start / server-end;
+  border-radius: 2rem 0 0 2rem;
+  background-color: $grey-darker;
+}
+
+.chatroom-container {
+  padding-top: 2vw;
+  grid-column: chatroom-start / chatroom-end;
+  background-color: $grey-dark;
+  display: grid;
+  grid-template-rows: 5vw 1fr;
+}
+
+.chat-container {
+  grid-column: chat-start / chat-end;
+}
+
+.members-container {
+  grid-column: members-start / members-end;
+}

@@ -1,0 +1,47 @@
+@import "../sass/styles.scss";
+
+.servers-list {
+  margin: 0;
+  list-style-type: none;
+  padding: 2vw;
+
+  &-server {
+    height: 5vw;
+    margin-bottom: 2vw;
+    background-color: $grey-m-dark;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+
+    &-name {
+      height: 100%;
+      width: 100%;
+      border: none;
+      font-family: inherit;
+      color: $grey-light;
+      background-color: $grey-m-dark;
+      border-radius: 50%;
+      outline-style: none;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: $primary-dark;
+        cursor: pointer;
+      }
+
+      &:focus {
+        background-color: $primary-dark;
+      }
+    }
+  }
+}
+
+.btn-click {
+  position: absolute;
+  height: 90%;
+  top: 5%;
+  left: -2vw;
+  border-radius: 2rem;
+  width: 0.5rem;
+  background-color: $primary;
+}
