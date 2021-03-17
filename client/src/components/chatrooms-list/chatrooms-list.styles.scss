@@ -1,54 +1,68 @@
 @import "../sass/styles.scss";
 
 .server-name {
-  height: 100%;
+  padding-top: 2vw;
+  height: 60%;
   grid-row: 1 / 2;
   font-size: 1.5rem;
   border-bottom: 1px solid $primary;
 }
 
-.chatrooms-list {
-  grid-row: 1 /2;
-  margin: 0;
-  list-style-type: none;
-  padding: 1vw;
+.chatrooms {
+  grid-row: 2 / 3;
 
-  &-chatroom {
-    height: 4vw;
-    margin-bottom: 1vw;
-    border-radius: 50%;
-    text-align: center;
-    position: relative;
+  &-list {
+    position: absolute;
+    grid-row: 2 /3;
+    list-style-type: none;
 
-    &-name {
-      height: 100%;
-      width: 100%;
-      border: none;
-      background-color: transparent;
-      font-family: inherit;
-      color: $grey-light;
-      border-radius: 0.5rem;
-      outline-style: none;
-      transition: all 0.2s;
+    &-chatroom {
+      height: 4vw;
+      margin-bottom: 2vw;
+      border-radius: 50%;
 
-      &:hover {
-        background-color: #1c1b2193;
-        cursor: pointer;
-      }
+      &-name {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        border: none;
+        padding: 0 4rem 0 0.5rem;
+        background-color: transparent;
+        font-family: inherit;
+        font-size: 1.15rem;
+        color: $grey-light;
+        border-radius: 0.5rem;
+        outline-style: none;
+        transition: all 0.2s;
 
-      &:focus {
-        background-color: #1c1b2193;
+        &:hover {
+          background-color: #1c1b2193;
+          cursor: pointer;
+        }
+
+        &:focus {
+          background-color: #1c1b2193;
+        }
       }
     }
   }
 }
 
-.btn-click {
-  position: absolute;
-  height: 90%;
-  top: 5%;
-  left: -2vw;
-  border-radius: 2rem;
-  width: 0.5rem;
-  background-color: $primary;
+.user {
+  grid-row: 3 / 4;
+  height: 3vw;
+  width: 8vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+  margin-left: 2rem;
+  padding: 0 4rem 0 4rem;
+  background-color: #1c1b2193;
+  font-family: inherit;
+  font-size: 1rem;
+  color: $grey-light;
+  border-radius: 0.5rem;
 }

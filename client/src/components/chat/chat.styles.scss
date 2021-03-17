@@ -1,0 +1,65 @@
+@import "../sass/styles.scss";
+
+.chatroom-name {
+  padding-top: 2vw;
+  height: 60%;
+  grid-row: 1 / 2;
+  font-size: 1.5rem;
+  border-bottom: 1px solid $primary;
+  position: relative;
+}
+
+.chat {
+  grid-row: 2 / 3;
+  height: 100%;
+  position: relative;
+
+  &-history {
+    list-style: none;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &-content {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+
+      &-user-img {
+        padding: 0 1rem;
+      }
+
+      &-container {
+        padding: 0 2rem;
+
+        &-display-name {
+          color: $primary;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+.message-box {
+  height: 3vw;
+  width: 40vw;
+  margin-left: 2rem;
+
+  &-input {
+    width: 100%;
+    outline-style: none;
+    border: none;
+    padding: 1rem 1rem 1rem 2rem;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    color: white;
+    background-color: $grey-dark;
+
+    -webkit-input-placeholder {
+      color: $grey-light;
+      font-family: inherit;
+    }
+  }
+}

@@ -2,10 +2,11 @@ import React from "react";
 
 import ServerCol from "../../components/servers-list/servers-list.component";
 import ChatRoomCol from "../../components/chatrooms-list/chatrooms-list.component";
+import ChatCol from "../../components/chat/chat.component";
 
-import "./chat.styles.scss";
+import "./chatpage.styles.scss";
 
-const Chat = () => {
+const ChatPage = () => {
   return (
     <section className="content-chat">
       <div className="server-container">
@@ -16,10 +17,13 @@ const Chat = () => {
         <ChatRoomCol />
       </div>
 
-      <div className="chat-container">chat</div>
+      <div className="chat-container">
+        <ChatCol />
+      </div>
+
       <div className="members-container">members</div>
     </section>
   );
 };
 
-export default Chat;
+export default ChatPage;

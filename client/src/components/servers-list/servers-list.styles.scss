@@ -3,7 +3,7 @@
 .servers-list {
   margin: 0;
   list-style-type: none;
-  padding: 2vw;
+  padding: 1.25vw;
 
   &-server {
     height: 5vw;
@@ -38,9 +38,9 @@
 
 .btn-click {
   position: absolute;
-  height: 90%;
-  top: 5%;
-  left: -2vw;
+  height: 4rem;
+  top: 8.75vw;
+  left: 5vw;
   border-radius: 2rem;
   width: 0.5rem;
   background-color: $primary;

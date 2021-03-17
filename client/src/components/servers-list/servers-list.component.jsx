@@ -32,16 +32,18 @@ const ServersList = () => {
   };
 
   return (
-    <ul className="servers-list">
-      {servers.map((server, index) => (
-        <li className="servers-list-server" key={index}>
-          {click ? <div className="btn-click">{""}</div> : null}
-          <button className="servers-list-server-name" onClick={handleClick}>
-            {server.name}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <div className="servers">
+      {click ? <div className="btn-click">{""}</div> : null}
+      <ul className="servers-list">
+        {servers.map((server, index) => (
+          <li className="servers-list-server" key={index}>
+            <button className="servers-list-server-name" onClick={handleClick}>
+              {server.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

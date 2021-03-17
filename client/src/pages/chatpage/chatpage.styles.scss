@@ -8,8 +8,8 @@
   min-height: 85vh;
   display: grid;
   grid-template-columns:
-    [server-start]10% [server-end
-    chatroom-start] 20% [chatroom-end chat-start] 55% [chat-end members-start] 1fr [members-end];
+    [server-start]8% [server-end
+    chatroom-start] 22% [chatroom-end chat-start] 55% [chat-end members-start] 1fr [members-end];
 }
 
 .server-container {
@@ -19,17 +19,23 @@
 }
 
 .chatroom-container {
-  padding-top: 2vw;
   grid-column: chatroom-start / chatroom-end;
   background-color: $grey-dark;
   display: grid;
-  grid-template-rows: 5vw 1fr;
+  grid-template-rows: 5vw 1fr 4vw;
 }
 
 .chat-container {
   grid-column: chat-start / chat-end;
+  background-color: $grey-m-dark;
+  display: grid;
+  grid-template-rows: 5vw 1fr 4vw;
 }
 
 .members-container {
   grid-column: members-start / members-end;
+  background-color: $grey-dark;
+  display: grid;
+  grid-template-rows: 5vw 1fr;
+  border-radius: 0 2rem 2rem 0;
 }

@@ -20,21 +20,24 @@ const ChatRooms = () => {
   };
 
   return (
-    <section className="chatrooms">
+    <>
       <div className="server-name">Pida Inducing Group</div>
-      <ul className="chatrooms-list">
-        {chatrooms.map((chatroom, index) => (
-          <li className="chatrooms-list-chatroom" key={index}>
-            <button
-              className="chatrooms-list-chatroom-name"
-              onClick={handleClick}
-            >
-              {chatroom.name}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </section>
+      <div className="chatrooms">
+        <ul className="chatrooms-list">
+          {chatrooms.map((chatroom, index) => (
+            <li className="chatrooms-list-chatroom" key={index}>
+              <button
+                className="chatrooms-list-chatroom-name"
+                onClick={handleClick}
+              >
+                {chatroom.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="user">Braxton</div>
+    </>
   );
 };
 
