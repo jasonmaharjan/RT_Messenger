@@ -36,6 +36,6 @@
   grid-column: members-start / members-end;
   background-color: $grey-dark;
   display: grid;
-  grid-template-rows: 5vw 1fr;
+  grid-template-rows: 5vw min-content 1fr;
   border-radius: 0 2rem 2rem 0;
 }

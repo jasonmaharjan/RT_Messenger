@@ -1,0 +1,97 @@
+@import "../sass/styles.scss";
+
+.members {
+  &-title {
+    padding-top: 2vw;
+    height: 60%;
+    grid-row: 1 / 2;
+    font-size: 1.5rem;
+    border-bottom: 1px solid $primary;
+    position: relative;
+  }
+
+  &-online {
+    grid-row: 2 / 3;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &-count {
+      text-align: left;
+      padding: 2rem 0 1rem 3rem;
+      font-size: 0.75rem;
+    }
+
+    &-list {
+      list-style: none;
+
+      &-container {
+        display: grid;
+        grid-template-columns: 1vw 1fr 3vw;
+        grid-gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      &-img {
+        align-self: center;
+        justify-self: flex-start;
+        grid-column: 1 / 2;
+      }
+
+      &-display-name {
+        align-self: center;
+        justify-self: flex-start;
+        grid-column: 2 / 3;
+      }
+
+      &-symbol {
+        align-self: center;
+        justify-self: flex-end;
+        grid-column: 3 / 4;
+        margin-right: auto;
+        height: 0.5rem;
+        width: 0.5rem;
+        background-color: $green;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &-offline {
+    grid-row: 3 / 4;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &-count {
+      text-align: left;
+      padding: 2rem 0 1rem 3rem;
+      font-size: 0.75rem;
+    }
+
+    &-list {
+      list-style: none;
+
+      &-container {
+        display: grid;
+        grid-template-columns: 1vw 1fr 3vw;
+        grid-gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      &-img {
+        align-self: center;
+        justify-self: flex-start;
+        grid-column: 1 / 2;
+      }
+
+      &-display-name {
+        align-self: center;
+        justify-self: flex-start;
+        grid-column: 2 / 3;
+      }
+    }
+  }
+}

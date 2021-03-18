@@ -65,4 +65,24 @@
   font-size: 1rem;
   color: $grey-light;
   border-radius: 0.5rem;
+
+  &-display-name {
+    color: $primary;
+    margin-right: 1rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-online-symbol {
+    align-self: center;
+    justify-self: flex-end;
+    grid-column: 3 / 4;
+    margin-right: auto;
+    height: 0.5rem;
+    width: 0.5rem;
+    background-color: $green;
+    border-radius: 50%;
+  }
 }

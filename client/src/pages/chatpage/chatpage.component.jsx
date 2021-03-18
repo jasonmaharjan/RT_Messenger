@@ -3,6 +3,7 @@ import React from "react";
 import ServerCol from "../../components/servers-list/servers-list.component";
 import ChatRoomCol from "../../components/chatrooms-list/chatrooms-list.component";
 import ChatCol from "../../components/chat/chat.component";
+import MembersCol from "../../components/members/members.component";
 
 import "./chatpage.styles.scss";
 
@@ -21,7 +22,9 @@ const ChatPage = () => {
         <ChatCol />
       </div>
 
-      <div className="members-container">members</div>
+      <div className="members-container">
+        <MembersCol />
+      </div>
     </section>
   );
 };

@@ -36,7 +36,10 @@ const ChatRooms = () => {
           ))}
         </ul>
       </div>
-      <div className="user">Braxton</div>
+      <div className="user">
+        <span className="user-display-name">Braxton</span>
+        <span className="user-online-symbol"> </span>
+      </div>
     </>
   );
 };
