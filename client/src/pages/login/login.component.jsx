@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import FormInput from "../../components/formInput/formInput.component";
 import Button from "../../components/button/button.component";
@@ -30,7 +31,20 @@ const Login = () => {
   };
 
   const handleClick = () => {
-    console.log("Button clicked");
+    axios({
+      url: "http://localhost:8080/login",
+      method: "POST",
+      data: {
+        email,
+        password,
+      },
+    })
+      .then((res) => {
+        console.log(res.data.message);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

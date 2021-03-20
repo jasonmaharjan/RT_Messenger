@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import FormInput from "../../components/formInput/formInput.component";
 import Button from "../../components/button/button.component";
@@ -39,14 +40,29 @@ const SignUp = () => {
     event.preventDefault();
   };
 
-  const handleClick = () => {
-    console.log("Button clicked");
+  const handleClick = async () => {
+    axios({
+      url: "http://localhost:8080/signup",
+      method: "POST",
+      data: {
+        displayName,
+        email,
+        password,
+        confirmPassword,
+      },
+    })
+      .then((res) => {
+        console.log(res.data.message);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <section className="content">
       <span className="title">Sign Up</span>
-      <form className="form" handleSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <FormInput
           name="displayName"
           type="string"
