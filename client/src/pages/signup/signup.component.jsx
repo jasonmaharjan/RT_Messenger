@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import axios from "axios";
 
 import FormInput from "../../components/formInput/formInput.component";
@@ -52,7 +53,12 @@ const SignUp = () => {
       },
     })
       .then((res) => {
-        console.log(res.data.message);
+        if (res.status === 201) {
+          alert("New account created");
+        }
+        if (res.status === 422) {
+          console.log(res);
+        }
       })
       .catch((error) => {
         console.log(error);

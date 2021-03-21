@@ -40,7 +40,10 @@ const Login = () => {
       },
     })
       .then((res) => {
-        console.log(res.data.message);
+        if (res.status === 200) {
+          window.location = "/about";
+          console.log(res.data.user);
+        }
       })
       .catch((error) => {
         console.log(error);
