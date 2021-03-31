@@ -1,36 +1,54 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { signOutStart } from "../../redux/user/user.actions";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { createStructuredSelector } from "reselect";
 
 import "./header.styles.scss";
 
-const Header = () => {
+const Header = ({ currentUser, signOutStart }) => {
   return (
     <section className="header">
       <div className="header-logo">Chat</div>
 
       <div className="header-links">
-        <Link className="header-link" to="/login">
-          Login
-        </Link>
-
-        <Link className="header-link" to="/signup">
-          Signup
-        </Link>
-
         <Link className="header-link" to="/about">
           About
         </Link>
 
-        <Link className="header-link" to="/chat">
-          Chat
-        </Link>
+        {!currentUser ? (
+          <Link className="header-link" to="/signup">
+            Signup
+          </Link>
+        ) : null}
 
-        <Link className="header-link" to="/logout">
-          Logout
-        </Link>
+        {currentUser ? (
+          <Link className="header-link" to="/chat">
+            Chat
+          </Link>
+        ) : null}
+
+        {!currentUser ? (
+          <Link className="header-link" to="/login">
+            Login
+          </Link>
+        ) : (
+          <span className="header-link" onClick={signOutStart}>
+            {" "}
+            Logout
+          </span>
+        )}
       </div>
     </section>
   );
 };
 
-export default Header;
+const MapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
+
+const MapDispatchToProps = (dispatch) => ({
+  signOutStart: () => dispatch(signOutStart()),
+});
+export default connect(MapStateToProps, MapDispatchToProps)(Header);

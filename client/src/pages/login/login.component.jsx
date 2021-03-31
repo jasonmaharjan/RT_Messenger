@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+import { logInStart } from "../../redux/user/user.actions";
 
 import FormInput from "../../components/formInput/formInput.component";
 import Button from "../../components/button/button.component";
 
 import "./login.styles.scss";
 
-const Login = () => {
+const Login = ({ logInStart }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,23 +32,11 @@ const Login = () => {
   };
 
   const handleClick = () => {
-    axios({
-      url: "http://localhost:8080/login",
-      method: "POST",
-      data: {
-        email,
-        password,
-      },
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          window.location = "/about";
-          console.log(res.data.user);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const emailAndPassword = {
+      email,
+      password,
+    };
+    logInStart(emailAndPassword);
   };
 
   return (
@@ -86,4 +75,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const MapDispatchToProps = (dispatch) => ({
+  logInStart: (emailAndPassword) => dispatch(logInStart(emailAndPassword)),
+});
+
+export default connect(null, MapDispatchToProps)(Login);

@@ -2,9 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
+const fs = require("fs");
 
-const MONGODB_URI =
-  "mongodb+srv://jason:TQK2cYo26S0SQmUD@cluster0.gshkc.mongodb.net/chat?retryWrites=true&w=majority";
+const MONGODB_URI = fs.readFileSync("secret.txt", "utf-8").toString();
 
 const app = express();
 

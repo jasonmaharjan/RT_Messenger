@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
-import axios from "axios";
+import { connect } from "react-redux";
+import { signUpStart } from "../../redux/user/user.actions";
 
 import FormInput from "../../components/formInput/formInput.component";
 import Button from "../../components/button/button.component";
 
 import "./signup.styles.scss";
 
-const SignUp = () => {
+const SignUp = ({ signUpStart }) => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,28 +42,9 @@ const SignUp = () => {
     event.preventDefault();
   };
 
-  const handleClick = async () => {
-    axios({
-      url: "http://localhost:8080/signup",
-      method: "POST",
-      data: {
-        displayName,
-        email,
-        password,
-        confirmPassword,
-      },
-    })
-      .then((res) => {
-        if (res.status === 201) {
-          alert("New account created");
-        }
-        if (res.status === 422) {
-          console.log(res);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const handleClick = () => {
+    const signUpData = { displayName, email, password, confirmPassword };
+    signUpStart(signUpData);
   };
 
   return (
@@ -119,4 +101,8 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+const MapDispatchToProps = (dispatch) => ({
+  signUpStart: (signUpData) => dispatch(signUpStart(signUpData)),
+});
+
+export default connect(null, MapDispatchToProps)(SignUp);

@@ -1,5 +1,8 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "./redux/user/user.selectors";
 
 import Header from "./components/header/header.component";
 import Login from "./pages/login/login.component";
@@ -9,19 +12,28 @@ import ChatPage from "./pages/chatpage/chatpage.component";
 
 import "./App.scss";
 
-const App = () => {
+const App = ({ currentUser }) => {
   return (
     <div className="App">
       <Header />
       <Switch>
-        <Redirect exact from="/" to="/login" />
+        <Route exact path="/about" component={About} />
+        <Redirect exact from="/" to="/about" />
+
         <Route path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/chat" component={ChatPage} />
+        <Route
+          exact
+          path="/chat"
+          render={() => (currentUser ? <ChatPage /> : <Redirect to="/login" />)}
+        />
       </Switch>
     </div>
   );
 };
 
-export default App;
+const MapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
+
+export default connect(MapStateToProps)(App);

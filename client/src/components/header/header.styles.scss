@@ -29,6 +29,7 @@
     &:hover {
       background-color: $grey-m;
       transform: scale(1.2);
+      cursor: pointer;
     }
 
     &:focus {

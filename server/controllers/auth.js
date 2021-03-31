@@ -15,6 +15,7 @@ exports.postLogin = (req, res, next) => {
   const password = req.body.password;
 
   const errors = validationResult(req);
+
   console.log(errors);
 
   if (!errors.isEmpty()) {
@@ -24,7 +25,6 @@ exports.postLogin = (req, res, next) => {
   }
 
   // check entry in database
-
   User.findOne({ email })
     .then((user) => {
       if (!user) {
@@ -68,18 +68,15 @@ exports.postSignup = (req, res, next) => {
 
   // check errors collected from express-validator for valid email
   const errors = validationResult(req);
+  console.log(errors);
 
   // error handler
   if (!errors.isEmpty()) {
     return res.status(422).json({
-      errorMessage: errors,
+      message: "Signup failed",
+      error: errors.array()[0].msg,
     });
   }
-
-  // if no errors present
-  User.findOne({ email }).then((user) => {
-    console.log("Email already exists");
-  });
 
   bcrypt
     .hash(password, 12)
@@ -92,16 +89,12 @@ exports.postSignup = (req, res, next) => {
       });
       return user.save();
     })
-    .then((result) => {
+    .then((userData) => {
       res.status(201).json({
-        result,
-        redirect: "/login",
+        userData,
       });
     })
     .catch((error) => {
-      // internal server error
-      res.status(500).json({
-        errorMessage: error,
-      });
+      console.log(error);
     });
 };
