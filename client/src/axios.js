@@ -1,9 +1,11 @@
 // axios functionalities here
 import axios from "axios";
 
+const BASE_URL = "http://localhost:8080/";
+
 export const login = (email, password) =>
   axios({
-    url: "http://localhost:8080/login",
+    url: BASE_URL + "login",
     method: "POST",
     data: {
       email,
@@ -12,6 +14,15 @@ export const login = (email, password) =>
   })
     .then((res) => {
       if (res.status === 200) {
+        localStorage.setItem("token", res.data.user.token);
+        localStorage.setItem("userId", res.data.user._id.toString());
+        const remainingMilliseconds = 8 * 60 * 60 * 1000;
+        const expiryDate = new Date(
+          new Date().getTime() + remainingMilliseconds
+        );
+        localStorage.setItem("expiryDate", expiryDate.toISOString());
+
+        // initiate auto logout
         window.location = "/chat";
         return res.data.user;
       }
@@ -22,7 +33,7 @@ export const login = (email, password) =>
 
 export const signup = ({ displayName, email, password, confirmPassword }) =>
   axios({
-    url: "http://localhost:8080/signup",
+    url: BASE_URL + "signup",
     method: "POST",
     data: {
       displayName,
@@ -41,3 +52,36 @@ export const signup = ({ displayName, email, password, confirmPassword }) =>
     .catch((error) => {
       console.log(error);
     });
+
+export const logout = (token) =>
+  axios({
+    url: BASE_URL + "logout",
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+    .then((res) => {
+      if (res.status === 200) {
+        // remove token from localStorage
+        localStorage.removeItem("token");
+        localStorage.removeItem("expiryDate");
+        localStorage.removeItem("userId");
+        window.location = "/login";
+      }
+    })
+    .catch((error) => console.log(error));
+
+export const getServerData = (token) => {
+  return axios({
+    url: BASE_URL + "servers",
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  })
+    .then((res) => {
+      console.log(res.data.message);
+    })
+    .catch((err) => console.log(err));
+};

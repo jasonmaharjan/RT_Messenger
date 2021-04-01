@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { signOutStart } from "../../redux/user/user.actions";
+import { logOutStart } from "../../redux/user/user.actions";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { createStructuredSelector } from "reselect";
 
 import "./header.styles.scss";
 
-const Header = ({ currentUser, signOutStart }) => {
+const Header = ({ currentUser, logOutStart }) => {
   return (
     <section className="header">
       <div className="header-logo">Chat</div>
@@ -34,7 +34,7 @@ const Header = ({ currentUser, signOutStart }) => {
             Login
           </Link>
         ) : (
-          <span className="header-link" onClick={signOutStart}>
+          <span className="header-link" onClick={logOutStart}>
             {" "}
             Logout
           </span>
@@ -49,6 +49,6 @@ const MapStateToProps = createStructuredSelector({
 });
 
 const MapDispatchToProps = (dispatch) => ({
-  signOutStart: () => dispatch(signOutStart()),
+  logOutStart: () => dispatch(logOutStart()),
 });
 export default connect(MapStateToProps, MapDispatchToProps)(Header);

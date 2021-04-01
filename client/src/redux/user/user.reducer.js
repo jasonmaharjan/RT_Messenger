@@ -22,13 +22,13 @@ const userReducer = (state = INITIAL_STATE, action) => {
         isUserFetching: false,
       };
 
-    case UserActionTypes.SIGN_OUT_START:
+    case UserActionTypes.LOG_OUT_START:
       return {
         ...state,
         currentUser: null,
       };
 
-    case UserActionTypes.SIGN_OUT_SUCCESS:
+    case UserActionTypes.LOG_OUT_SUCCESS:
       return {
         ...state,
         currentUser: null,
@@ -36,7 +36,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       };
 
     case UserActionTypes.LOG_IN_FAILURE:
-    case UserActionTypes.SIGN_OUT_FAILURE:
+    case UserActionTypes.LOG_OUT_FAILURE:
     case UserActionTypes.SIGN_UP_FAILURE:
       return {
         ...state,

@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import ServerCol from "../../components/servers-list/servers-list.component";
 import ChatRoomCol from "../../components/chatrooms-list/chatrooms-list.component";
 import ChatCol from "../../components/chat/chat.component";
 import MembersCol from "../../components/members/members.component";
 
+import { getServerData } from "../../axios";
+
 import "./chatpage.styles.scss";
 
 const ChatPage = () => {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    getServerData(token);
+  }, []);
+
   return (
     <section className="content-chat">
       <div className="server-container">
