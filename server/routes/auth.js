@@ -5,6 +5,8 @@ const { check, body } = require("express-validator");
 const User = require("../models/user");
 const authController = require("../controllers/auth");
 
+const isAuth = require("../middlewares/is-auth"); // middleware to check for JWT
+
 router.get("/", (req, res, next) => {
   res.redirect("/login");
 });
@@ -63,5 +65,11 @@ router.post(
   ],
   authController.postSignup
 );
+
+// logout
+router.post("/logout", isAuth, authController.postLogout);
+
+// servers route
+router.get("/servers", isAuth, authController.getServers);
 
 module.exports = router;

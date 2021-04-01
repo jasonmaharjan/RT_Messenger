@@ -1,6 +1,8 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const crypto = require("crypto");
+const fs = require("fs");
+const jwt = require("jsonwebtoken");
 
 const { validationResult } = require("express-validator");
 
@@ -15,7 +17,6 @@ exports.postLogin = (req, res, next) => {
   const password = req.body.password;
 
   const errors = validationResult(req);
-
   console.log(errors);
 
   if (!errors.isEmpty()) {
@@ -37,6 +38,22 @@ exports.postLogin = (req, res, next) => {
         .compare(password, user.password)
         .then((match) => {
           if (match) {
+            // generate auth token using email, id and private key(JWT secret)
+            const jwtSecret = fs
+              .readFileSync("jwt_secret.txt", "utf-8")
+              .toString();
+
+            const token = jwt.sign(
+              { email, userId: user._id.toString() },
+              jwtSecret,
+              { expiresIn: "8h" }
+            );
+
+            user.token = token;
+            user.save();
+
+            console.log(user);
+
             return res.status(200).json({
               message: "Login successful",
               user,
@@ -73,8 +90,7 @@ exports.postSignup = (req, res, next) => {
   // error handler
   if (!errors.isEmpty()) {
     return res.status(422).json({
-      message: "Signup failed",
-      error: errors.array()[0].msg,
+      errorMessage: errors.array()[0].msg,
     });
   }
 
@@ -96,5 +112,29 @@ exports.postSignup = (req, res, next) => {
     })
     .catch((error) => {
       console.log(error);
+      res.status(500).json({
+        message: "Internal Server error",
+      });
     });
+};
+
+exports.postLogout = (req, res, next) => {
+  const userId = req.userId;
+
+  User.findOne({ _id: userId })
+    .then((user) => {
+      user.token = undefined;
+      user.save();
+
+      res.status(200).json({
+        message: "logout successful",
+      });
+    })
+    .catch((error) => console.log(error));
+};
+
+exports.getServers = (req, res, next) => {
+  res.status(200).json({
+    message: "Welcome to Chat Servers!",
+  });
 };
