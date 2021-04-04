@@ -18,6 +18,15 @@ const UserSchema = new Schema({
   token: {
     type: String,
   },
+  servers: [
+    {
+      serverId: {
+        type: Schema.Types.ObjectId,
+        ref: "Server",
+        required: true,
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("User", UserSchema);
