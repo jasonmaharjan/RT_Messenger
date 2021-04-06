@@ -1,10 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectCurrentUser } from "./redux/user/user.selectors";
-import { logOutStart } from "./redux/user/user.actions";
-
 import Header from "./components/header/header.component";
 import Login from "./pages/login/login.component";
 import SignUp from "./pages/signup/signup.component";
@@ -13,16 +8,7 @@ import ChatPage from "./pages/chatpage/chatpage.component";
 
 import "./App.scss";
 
-const App = ({ currentUser, logOutStart }) => {
-  // log user out and destroy token after expiry date
-  useEffect(() => {
-    const currentDate = Date.now();
-    const expiryDate = new Date(localStorage.getItem("expiryDate")).getTime();
-
-    if (currentDate > expiryDate) {
-      logOutStart();
-    }
-  }, []);
+const App = () => {
   return (
     <div className="App">
       <Header />
@@ -35,19 +21,17 @@ const App = ({ currentUser, logOutStart }) => {
         <Route
           exact
           path="/chat"
-          render={() => (currentUser ? <ChatPage /> : <Redirect to="/login" />)}
+          render={() =>
+            localStorage.getItem("token") ? (
+              <ChatPage />
+            ) : (
+              <Redirect to="/login" />
+            )
+          }
         />
       </Switch>
     </div>
   );
 };
 
-const MapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-});
-
-const MapDispatchToProps = (dispatch) => ({
-  logOutStart: () => dispatch(logOutStart()),
-});
-
-export default connect(MapStateToProps, MapDispatchToProps)(App);
+export default App;

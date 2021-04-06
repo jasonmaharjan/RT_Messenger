@@ -52,8 +52,6 @@ exports.postLogin = (req, res, next) => {
             user.token = token;
             user.save();
 
-            console.log(user);
-
             return res.status(200).json({
               message: "Login successful",
               user,
@@ -131,6 +129,12 @@ exports.postLogout = (req, res, next) => {
       });
     })
     .catch((error) => console.log(error));
+};
+
+exports.getChat = (req, res, next) => {
+  res.status(200).json({
+    message: "Token is valid",
+  });
 };
 
 exports.getServers = (req, res, next) => {

@@ -30,6 +30,9 @@ module.exports = (req, res, next) => {
     next();
   } catch (error) {
     // error.statusCode = 500;
+    res.status(400).json({
+      message: "Token Expired",
+    });
     console.log(error);
   }
 };

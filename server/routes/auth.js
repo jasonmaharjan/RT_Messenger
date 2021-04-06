@@ -69,7 +69,10 @@ router.post(
 // logout
 router.post("/logout", isAuth, authController.postLogout);
 
-// servers route
+// chat route
+router.get("/chat", isAuth, authController.getChat);
+
+// server route
 router.get("/servers", isAuth, authController.getServers);
 
 module.exports = router;

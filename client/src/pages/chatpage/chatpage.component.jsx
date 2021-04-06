@@ -5,14 +5,14 @@ import ChatRoomCol from "../../components/chatrooms-list/chatrooms-list.componen
 import ChatCol from "../../components/chat/chat.component";
 import MembersCol from "../../components/members/members.component";
 
-import { getServerData } from "../../axios";
+import { chatPage, getServerData } from "../../axios";
 
 import "./chatpage.styles.scss";
 
 const ChatPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
-    getServerData(token);
+    chatPage(token); // check validity of token
   }, []);
 
   return (

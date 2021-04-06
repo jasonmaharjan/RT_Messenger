@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { createServer } from "../../redux/server/server.actions";
 import { selectServer } from "../../redux/server/server.selectors";
 
+import { getServerData } from "../../axios";
+
 import "./servers-list.styles.scss";
 
 const ServersList = ({ currentUser, servers, createServer }) => {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    getServerData(token);
+  }, []);
+
   console.log(servers, currentUser);
   const [click, setClick] = useState(false);
 
