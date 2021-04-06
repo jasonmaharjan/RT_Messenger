@@ -75,4 +75,15 @@ router.get("/chat", isAuth, authController.getChat);
 // server route
 router.get("/servers", isAuth, authController.getServers);
 
+router.post(
+  "/servers",
+  [
+    body("serverName", "Please enter at least 5 characters")
+      .isLength({ min: 5 })
+      .trim(),
+  ],
+  isAuth,
+  authController.postServers
+);
+
 module.exports = router;

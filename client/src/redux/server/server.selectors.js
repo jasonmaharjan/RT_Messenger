@@ -6,3 +6,8 @@ export const selectServer = createSelector(
   [selectserver],
   (server) => server.servers
 );
+
+export const selectError = createSelector(
+  [selectserver],
+  (server) => server.error
+);

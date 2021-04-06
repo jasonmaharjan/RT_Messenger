@@ -1,15 +1,29 @@
 import { ServerActionTypes } from "./server.types";
 
 const INITIAL_STATE = {
-  servers: [],
+  servers: null,
+  error: null,
 };
 
 const ServerReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ServerActionTypes.CREATE_SERVER:
+    case ServerActionTypes.GET_SERVER_DATA_SUCCESS:
       return {
         ...state,
-        servers: action.payload,
+        servers: action.payload.data,
+      };
+
+    case ServerActionTypes.CREATE_SERVER_SUCCESS:
+      return {
+        ...state,
+        servers: state.servers.push(action.payload),
+      };
+
+    case ServerActionTypes.GET_SERVER_DATA_FAILURE:
+    case ServerActionTypes.CREATE_SERVER_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
       };
 
     default:

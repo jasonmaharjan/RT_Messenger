@@ -75,7 +75,7 @@ export const chatPage = (token) => {
     },
   })
     .then((res) => {
-      console.log(res.data.message);
+      //console.log(res.data.message);
     })
     .catch((err) => {
       localStorage.removeItem("token");
@@ -94,7 +94,27 @@ export const getServerData = (token) => {
     },
   })
     .then((res) => {
-      console.log(res.data.message);
+      if (res.status === 200) {
+        return res.data;
+      }
     })
     .catch((err) => console.log(err));
+};
+
+export const createServerData = (payload) => {
+  return axios({
+    url: BASE_URL + "servers",
+    method: "POST",
+    data: {
+      serverName: payload.serverName,
+      serverImageURL: payload.serverImageURL,
+    },
+    headers: {
+      Authorization: "Bearer " + payload.token,
+    },
+  })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => console.log(error));
 };

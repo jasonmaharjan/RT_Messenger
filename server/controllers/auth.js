@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
+const Server = require("../models/server");
 const crypto = require("crypto");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
@@ -138,7 +139,57 @@ exports.getChat = (req, res, next) => {
 };
 
 exports.getServers = (req, res, next) => {
-  res.status(200).json({
-    message: "Welcome to Chat Servers!",
+  const userId = req.userId;
+
+  User.findOne({ _id: userId })
+    .then((user) => {
+      res.status(200).json({
+        data: user.servers,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.postServers = (req, res, next) => {
+  const userId = req.userId;
+  const serverName = req.body.serverName;
+  const serverImageURL = req.body.serverImageURL;
+
+  const errors = validationResult(req);
+  console.log(errors);
+
+  // error handler
+  if (!errors.isEmpty()) {
+    return res.status(422).json({
+      errorMessage: errors.array()[0].msg,
+    });
+  }
+
+  // create new server
+  const server = new Server({
+    serverName,
+    serverImageURL,
+    adminId: userId,
+    users: [{ userId }],
   });
+
+  server
+    .save()
+    .then((server) => {
+      const serverId = server._id;
+      User.findOne({ _id: userId })
+        .then((user) => {
+          user.servers.push({ serverId });
+          user
+            .save()
+            .then(() => {
+              return res.status(201).json({
+                message: "Server created",
+              });
+            })
+            .catch((error) => console.log(error));
+        })
+        .catch((error) => console.log(error));
+    })
+    .catch((error) => console.log(error));
 };

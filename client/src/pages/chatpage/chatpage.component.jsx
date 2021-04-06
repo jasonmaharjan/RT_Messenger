@@ -5,7 +5,7 @@ import ChatRoomCol from "../../components/chatrooms-list/chatrooms-list.componen
 import ChatCol from "../../components/chat/chat.component";
 import MembersCol from "../../components/members/members.component";
 
-import { chatPage, getServerData } from "../../axios";
+import { chatPage } from "../../axios";
 
 import "./chatpage.styles.scss";
 

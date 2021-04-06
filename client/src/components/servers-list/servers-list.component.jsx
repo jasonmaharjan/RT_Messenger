@@ -5,17 +5,19 @@ import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { createServer } from "../../redux/server/server.actions";
 import { selectServer } from "../../redux/server/server.selectors";
 
-import { getServerData } from "../../axios";
+import { getServerData } from "../../redux/server/server.actions";
 
 import "./servers-list.styles.scss";
 
-const ServersList = ({ currentUser, servers, createServer }) => {
+const ServersList = ({ currentUser, servers, getServerData, createServer }) => {
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    getServerData(token);
+    if (token) {
+      getServerData(token);
+    }
   }, []);
 
-  console.log(servers, currentUser);
   const [click, setClick] = useState(false);
 
   const handleClick = () => {
@@ -23,8 +25,16 @@ const ServersList = ({ currentUser, servers, createServer }) => {
   };
 
   const handleCreateServer = () => {
-    console.log(1);
-    createServer();
+    // Modal or smth here...
+    const serverName = "Pida Inducing Group";
+    const serverImageURL = "yowza";
+
+    const serverData = {
+      token,
+      serverName,
+      serverImageURL,
+    };
+    createServer(serverData);
   };
 
   return (
@@ -39,13 +49,6 @@ const ServersList = ({ currentUser, servers, createServer }) => {
             +
           </button>
         </li>
-        {servers.map((server, index) => (
-          <li className="servers-list-server" key={index}>
-            <button className="servers-list-server-name" onClick={handleClick}>
-              {server.name}
-            </button>
-          </li>
-        ))}
       </ul>
     </div>
   );
@@ -57,7 +60,8 @@ const MapStateToProps = createStructuredSelector({
 });
 
 const MapDispatchToProps = (dispatch) => ({
-  createSever: (userData) => dispatch(createServer(userData)),
+  getServerData: (token) => dispatch(getServerData(token)),
+  createServer: (serverData) => dispatch(createServer(serverData)),
 });
 
 export default connect(MapStateToProps, MapDispatchToProps)(ServersList);
