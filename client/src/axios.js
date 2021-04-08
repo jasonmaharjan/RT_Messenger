@@ -95,7 +95,7 @@ export const getServerData = (token) => {
   })
     .then((res) => {
       if (res.status === 200) {
-        return res.data;
+        return res.data.servers;
       }
     })
     .catch((err) => console.log(err));
@@ -114,7 +114,7 @@ export const createServerData = (payload) => {
     },
   })
     .then((res) => {
-      return res.data;
+      return res.data.serverData;
     })
     .catch((error) => console.log(error));
 };

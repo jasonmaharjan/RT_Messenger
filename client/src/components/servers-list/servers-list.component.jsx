@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
-import { createServer } from "../../redux/server/server.actions";
 import { selectServer } from "../../redux/server/server.selectors";
-
-import { getServerData } from "../../redux/server/server.actions";
+import {
+  getServerData,
+  toggleCreateServer,
+} from "../../redux/server/server.actions";
 
 import "./servers-list.styles.scss";
 
-const ServersList = ({ currentUser, servers, getServerData, createServer }) => {
+const ServersList = ({
+  currentUser,
+  servers,
+  getServerData,
+  toggleCreateServer,
+}) => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -25,16 +30,7 @@ const ServersList = ({ currentUser, servers, getServerData, createServer }) => {
   };
 
   const handleCreateServer = () => {
-    // Modal or smth here...
-    const serverName = "Pida Inducing Group";
-    const serverImageURL = "yowza";
-
-    const serverData = {
-      token,
-      serverName,
-      serverImageURL,
-    };
-    createServer(serverData);
+    toggleCreateServer();
   };
 
   return (
@@ -55,13 +51,12 @@ const ServersList = ({ currentUser, servers, getServerData, createServer }) => {
 };
 
 const MapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
   servers: selectServer,
 });
 
 const MapDispatchToProps = (dispatch) => ({
   getServerData: (token) => dispatch(getServerData(token)),
-  createServer: (serverData) => dispatch(createServer(serverData)),
+  toggleCreateServer: () => dispatch(toggleCreateServer()),
 });
 
 export default connect(MapStateToProps, MapDispatchToProps)(ServersList);

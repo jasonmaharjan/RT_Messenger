@@ -141,10 +141,10 @@ exports.getChat = (req, res, next) => {
 exports.getServers = (req, res, next) => {
   const userId = req.userId;
 
-  User.findOne({ _id: userId })
-    .then((user) => {
-      res.status(200).json({
-        data: user.servers,
+  Server.find({ "users.userId": userId })
+    .then((servers) => {
+      return res.status(200).json({
+        servers,
       });
     })
     .catch((err) => console.log(err));
@@ -184,7 +184,7 @@ exports.postServers = (req, res, next) => {
             .save()
             .then(() => {
               return res.status(201).json({
-                message: "Server created",
+                serverData: server,
               });
             })
             .catch((error) => console.log(error));

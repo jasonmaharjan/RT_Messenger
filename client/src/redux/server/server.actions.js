@@ -6,9 +6,9 @@ export const getServerData = (token) => ({
   payload: token,
 });
 
-export const getServerDataSuccess = (data) => ({
+export const getServerDataSuccess = (servers) => ({
   type: ServerActionTypes.GET_SERVER_DATA_SUCCESS,
-  payload: data,
+  payload: servers,
 });
 
 export const getServerDataFailure = (error) => ({
@@ -30,4 +30,8 @@ export const createServerSuccess = (data) => ({
 export const createServerFailure = (error) => ({
   type: ServerActionTypes.CREATE_SERVER_FAILURE,
   payload: error,
+});
+
+export const toggleCreateServer = () => ({
+  type: ServerActionTypes.TOGGLE_CREATE_SERVER,
 });

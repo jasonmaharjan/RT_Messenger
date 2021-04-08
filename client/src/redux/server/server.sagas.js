@@ -8,9 +8,9 @@ import { getServerData, createServerData } from "../../axios";
 
 export function* getServer({ payload }) {
   try {
-    const data = yield call(getServerData, payload);
-    if (data) {
-      yield put(getServerDataSuccess(data));
+    const servers = yield call(getServerData, payload);
+    if (servers) {
+      yield put(getServerDataSuccess(servers));
     }
   } catch (error) {
     yield put(getServerDataFailure(error));

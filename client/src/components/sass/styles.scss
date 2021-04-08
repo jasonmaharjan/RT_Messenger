@@ -54,13 +54,13 @@ $ink-free: "ink free";
     outline: none;
 
     &::-webkit-input-placeholder {
-      font-family: $ink-free;
+      font-family: monospace;
       color: $grey-m;
       font-size: 1rem;
     }
 
     &::-moz-placeholder {
-      font-family: $ink-free;
+      font-family: monospace;
       color: $grey-darker;
     }
   }
@@ -77,6 +77,12 @@ $ink-free: "ink free";
   text-transform: uppercase;
   padding: 0.5rem 2rem;
   outline: none;
+  transition: all 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+  }
 }
 
 .text {

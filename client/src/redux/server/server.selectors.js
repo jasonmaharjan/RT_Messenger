@@ -7,6 +7,11 @@ export const selectServer = createSelector(
   (server) => server.servers
 );
 
+export const selectToggle = createSelector(
+  [selectserver],
+  (server) => server.toggleFlag
+);
+
 export const selectError = createSelector(
   [selectserver],
   (server) => server.error
