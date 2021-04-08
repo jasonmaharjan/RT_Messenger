@@ -24,6 +24,11 @@
       outline-style: none;
       transition: all 0.2s;
 
+      &-abb {
+        text-transform: uppercase;
+        font-size: 1.25rem;
+      }
+
       &:hover {
         background-color: $primary-dark;
         cursor: pointer;

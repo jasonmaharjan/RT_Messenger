@@ -34,6 +34,7 @@ const CreateServer = ({ createServer, toggleCreateServer }) => {
   const handleClick = () => {
     const serverData = { token, serverName, serverImageURL };
     createServer(serverData);
+    toggleCreateServer();
   };
 
   const handleClose = () => {

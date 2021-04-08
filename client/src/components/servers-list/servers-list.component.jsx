@@ -33,10 +33,31 @@ const ServersList = ({
     toggleCreateServer();
   };
 
+  const getAbb = (name) => {
+    const nameArr = name.split(" ");
+    var abbreviation = "";
+    for (var i = 0; i <= nameArr.length - 1; i++) {
+      abbreviation += nameArr[i].charAt(0);
+    }
+    return <span className="servers-list-server-name-abb">{abbreviation}</span>;
+  };
+
   return (
     <div className="servers">
       {click ? <div className="btn-click">{""}</div> : null}
       <ul className="servers-list">
+        {servers
+          ? servers.map((server, index) => (
+              <li className="servers-list-server" key={index}>
+                <button
+                  className="servers-list-server-name"
+                  onClick={handleClick}
+                >
+                  {getAbb(server.serverName)}
+                </button>
+              </li>
+            ))
+          : null}
         <li className="servers-list-server" key={1}>
           <button
             className="servers-list-server-name"
