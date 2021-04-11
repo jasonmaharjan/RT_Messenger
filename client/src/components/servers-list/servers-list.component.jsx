@@ -10,14 +10,28 @@ import {
 
 import "./servers-list.styles.scss";
 
-const ServersList = ({
-  currentUser,
-  servers,
-  getServerData,
-  toggleCreateServer,
-}) => {
+const ServersList = ({ currentUser, getServerData, toggleCreateServer }) => {
   const token = localStorage.getItem("token");
-
+  const [servers, setServers] = useState([
+    {
+      name: "PIG",
+    },
+    {
+      name: "CSFL",
+    },
+    {
+      name: "HCI",
+    },
+    {
+      name: "C++",
+    },
+    {
+      name: "JS",
+    },
+    {
+      name: "+",
+    },
+  ]);
   useEffect(() => {
     if (token) {
       getServerData(token);
@@ -33,14 +47,14 @@ const ServersList = ({
     toggleCreateServer();
   };
 
-  const getAbb = (name) => {
+  /*const getAbb = (name) => {
     const nameArr = name.split(" ");
     var abbreviation = "";
     for (var i = 0; i <= nameArr.length - 1; i++) {
       abbreviation += nameArr[i].charAt(0);
     }
     return <span className="servers-list-server-name-abb">{abbreviation}</span>;
-  };
+  };*/
 
   const handleDragEnd = ({ destination, source }) => {
     // console.log('source',source)
@@ -106,7 +120,8 @@ const ServersList = ({
                                   className="servers-list-server-name"
                                   onClick={handleClick}
                                 >
-                                  {getAbb(server.serverName)}
+                                  {server.name}
+                                  {/*{getAbb(server.serverName)}*/}
                                 </div>
                               </li>
                             );
