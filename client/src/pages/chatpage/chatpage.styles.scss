@@ -1,41 +1,41 @@
 @import "../../components/sass/styles.scss";
 
 .content-chat {
-  color: $grey-light;
-  border-radius: 2rem;
-  background-color: $grey-m-dark;
-  margin: 0.5rem 5vw 0;
-  min-height: 85vh;
-  display: grid;
-  grid-template-columns:
-    [server-start]8% [server-end
-    chatroom-start] 22% [chatroom-end chat-start] 55% [chat-end members-start] 1fr [members-end];
+    color: $grey-light;
+    border-radius: 0.5rem;
+    background-color: $grey-m-dark;
+    margin: 0.5rem 2vw 0;
+    min-height: 85vh;
+    display: grid;
+    grid-template-columns:
+        [server-start]8% [server-end
+        chatroom-start] 22% [chatroom-end chat-start] 55% [chat-end members-start] 1fr [members-end];
 }
 
 .server-container {
-  grid-column: server-start / server-end;
-  border-radius: 2rem 0 0 2rem;
-  background-color: $grey-darker;
+    grid-column: server-start / server-end;
+    border-radius: 0.5rem 0 0 0.5rem;
+    background-color: $grey-darker;
 }
 
 .chatroom-container {
-  grid-column: chatroom-start / chatroom-end;
-  background-color: $grey-dark;
-  display: grid;
-  grid-template-rows: 5vw 1fr 4vw;
+    grid-column: chatroom-start / chatroom-end;
+    background-color: $grey-dark;
+    display: grid;
+    grid-template-rows: 5vw 1fr 4vw;
 }
 
 .chat-container {
-  grid-column: chat-start / chat-end;
-  background-color: $grey-m-dark;
-  display: grid;
-  grid-template-rows: 5vw 1fr 4vw;
+    grid-column: chat-start / chat-end;
+    background-color: $grey-m-dark;
+    display: grid;
+    grid-template-rows: 5vw 1fr 4vw;
 }
 
 .members-container {
-  grid-column: members-start / members-end;
-  background-color: $grey-dark;
-  display: grid;
-  grid-template-rows: 5vw min-content 1fr;
-  border-radius: 0 2rem 2rem 0;
+    grid-column: members-start / members-end;
+    background-color: $grey-dark;
+    display: grid;
+    grid-template-rows: 5vw min-content 1fr;
+    border-radius: 0 0.5rem 0.5rem 0;
 }

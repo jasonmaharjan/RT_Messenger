@@ -46,22 +46,26 @@ $ink-free: "ink free";
         font-size: 1rem;
         color: $grey-darker;
         width: 20vw;
-        height: 0.75rem;
-        border-radius: 2rem;
+        height: 0.9rem;
+        font-weight: 700;
+        border-radius: 0.5rem;
         border: none;
         padding: 1rem 1.5rem;
         background-color: $grey-light;
         outline: none;
 
         &::-webkit-input-placeholder {
-            font-family: monospace;
+            font-family: inherit;
+            font-weight: 400;
             color: $grey-m;
             font-size: 1rem;
         }
 
         &::-moz-placeholder {
-            font-family: monospace;
-            color: $grey-darker;
+            font-family: inherit;
+            font-weight: 700;
+            color: $grey-m;
+            font-size: 1rem;
         }
     }
 }
