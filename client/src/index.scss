@@ -1,16 +1,15 @@
 @import "./components/sass/styles.scss";
 
 body {
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  font-family: monospace;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: $background;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-family: "ink free", monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $background;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }

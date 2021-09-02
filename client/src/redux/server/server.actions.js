@@ -35,3 +35,18 @@ export const createServerFailure = (error) => ({
 export const toggleCreateServer = () => ({
   type: ServerActionTypes.TOGGLE_CREATE_SERVER,
 });
+
+export const arrangeServerList = (data) => ({
+  type: ServerActionTypes.ARRANGE_SERVER_LIST,
+  payload: data,
+});
+
+export const arrangeServerListSuccess = (newServerList) => ({
+  type: ServerActionTypes.ARRANGE_SERVER_LIST_SUCCESS,
+  payload: newServerList,
+});
+
+export const arrangeServerListFailure = (error) => ({
+  type: ServerActionTypes.ARRANGE_SERVER_LIST_FAILURE,
+  payload: error,
+});
