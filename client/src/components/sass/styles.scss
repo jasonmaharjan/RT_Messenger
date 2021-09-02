@@ -19,89 +19,89 @@ $ink-free: "ink free";
 
 // global styles
 .content {
-  border-radius: 0.95rem;
-  background-color: $grey-m-dark;
-  margin: 0.5rem 5vw 0;
-  min-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    border-radius: 0.95rem;
+    background-color: $grey-m-dark;
+    margin: 0.5rem 5vw 0;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .title {
-  font-size: 2.75rem;
-  color: $grey-light;
+    font-size: 2.75rem;
+    color: $grey-light;
 }
 
 .form {
-  margin: 1rem;
+    margin: 1rem;
 
-  &-group {
-    padding: 1.25rem;
-  }
-
-  &-input {
-    font-family: inherit;
-    font-size: 1rem;
-    color: $grey-darker;
-    width: 20vw;
-    height: 0.75rem;
-    border-radius: 2rem;
-    border: none;
-    padding: 1rem 1.5rem;
-    background-color: $grey-light;
-    outline: none;
-
-    &::-webkit-input-placeholder {
-      font-family: monospace;
-      color: $grey-m;
-      font-size: 1rem;
+    &-group {
+        padding: 1.25rem;
     }
 
-    &::-moz-placeholder {
-      font-family: monospace;
-      color: $grey-darker;
+    &-input {
+        font-family: inherit;
+        font-size: 1rem;
+        color: $grey-darker;
+        width: 20vw;
+        height: 0.75rem;
+        border-radius: 2rem;
+        border: none;
+        padding: 1rem 1.5rem;
+        background-color: $grey-light;
+        outline: none;
+
+        &::-webkit-input-placeholder {
+            font-family: monospace;
+            color: $grey-m;
+            font-size: 1rem;
+        }
+
+        &::-moz-placeholder {
+            font-family: monospace;
+            color: $grey-darker;
+        }
     }
-  }
 }
 
 .button {
-  margin: 1rem;
-  background-color: $grey-darker;
-  border: none;
-  border-radius: 2rem;
-  font-size: 1rem;
-  font-family: inherit;
-  color: $primary;
-  text-transform: uppercase;
-  padding: 0.5rem 2rem;
-  outline: none;
-  transition: all 0.2s;
+    margin: 1rem;
+    background-color: $grey-darker;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-family: inherit;
+    color: $primary;
+    text-transform: uppercase;
+    padding: 0.5rem 2rem;
+    outline: none;
+    transition: all 0.2s;
 
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.01);
-  }
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.01);
+    }
 }
 
 .text {
-  color: $grey-light;
-  font-family: inherit;
-
-  &-about {
-    margin-top: -50vh;
     color: $grey-light;
     font-family: inherit;
-    font-size: 1.25rem;
-  }
 
-  &-p-highlight {
-    color: $primary;
-    text-decoration: underline;
-  }
+    &-about {
+        margin-top: -50vh;
+        color: $grey-light;
+        font-family: inherit;
+        font-size: 1.25rem;
+    }
 
-  &-s-highlight {
-    color: $green;
-  }
+    &-p-highlight {
+        color: $primary;
+        text-decoration: underline;
+    }
+
+    &-s-highlight {
+        color: $green;
+    }
 }

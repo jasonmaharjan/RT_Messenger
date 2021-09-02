@@ -1,4 +1,5 @@
 import { ServerActionTypes } from "./server.types";
+import { getServerData } from "./server.utils";
 
 const INITIAL_STATE = {
   servers: [],
@@ -20,8 +21,15 @@ const ServerReducer = (state = INITIAL_STATE, action) => {
         servers: [...state.servers, action.payload],
       };
 
+    case ServerActionTypes.ARRANGE_SERVER_LIST_SUCCESS:
+      return {
+        ...state,
+        servers: [...action.payload],
+      };
+
     case ServerActionTypes.GET_SERVER_DATA_FAILURE:
     case ServerActionTypes.CREATE_SERVER_FAILURE:
+    case ServerActionTypes.ARRANGE_SERVER_LIST_FAILURE:
       return {
         ...state,
         error: action.payload,
