@@ -86,4 +86,7 @@ router.post(
   authController.postServers
 );
 
+// arrange servers route
+router.post("/arrangeServers", isAuth, authController.arrangeServers);
+
 module.exports = router;

@@ -118,3 +118,24 @@ export const createServerData = (payload) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const arrangeServers = (payload) => {
+  return axios({
+    url: BASE_URL + "arrangeServers",
+    method: "POST",
+    data: {
+      sourceItem: payload.sourceItem,
+      source: payload.source,
+      destination: payload.destination,
+    },
+    headers: {
+      Authorization: "Bearer " + payload.token,
+    },
+  })
+    .then((res) => {
+      if (res.status === 200) {
+        return res.data.newServerList;
+      }
+    })
+    .catch((err) => console.log(err));
+};
