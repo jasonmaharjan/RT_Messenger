@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { logInStart } from "../../redux/user/user.actions";
 
-import FormInput from "../../components/formInput/formInput.component";
+import FormInput from "../../components/formInput.component";
 import Button from "../../components/button/button.component";
 
 import "./login.styles.scss";

@@ -10,7 +10,7 @@ import MembersCol from "../../components/members/members.component";
 
 import CreateServer from "../../components/dialog-box/createServer.component";
 
-import { chatPage } from "../../axios";
+import { chatPage } from "../../api/axios";
 
 import "./chatpage.styles.scss";
 

@@ -8,7 +8,11 @@ import {
   arrangeServerListFailure,
 } from "./server.actions";
 
-import { getServerData, createServerData, arrangeServers } from "../../axios";
+import {
+  getServerData,
+  createServerData,
+  arrangeServers,
+} from "../../api/axios";
 
 export function* getServer({ payload }) {
   try {

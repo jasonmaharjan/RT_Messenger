@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.section`
   height: 4vh;
-  padding-top: 2rem;
+  margin: 1rem 0rem;
   display: flex;
   align-items: center;
 `;
 
 export const Logo = styled.div`
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: $grey-light;
   margin-left: 5vw;
 `;
@@ -37,6 +37,10 @@ export const StyledLink = styled(Link)`
   &:focus {
     background-color: var(--grey-m);
     transform: scale(1.2);
+  }
+
+  &:not(:last-child) {
+    margin-right: 0.5rem;
   }
 `;
 

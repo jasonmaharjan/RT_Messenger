@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
 import { connect } from "react-redux";
-import { signUpStart } from "../../redux/user/user.actions";
+import { signUpStart } from "../redux/user/user.actions";
 
-import FormInput from "../../components/formInput/formInput.component";
-import Button from "../../components/button/button.component";
+import FormInput from "../components/formInput.component";
+import Button from "../components/button/button.component";
 
-import "./signup.styles.scss";
+import { SignUpContainer } from "../styles/Container";
+import { Form } from "../styles/Form";
+import { Heading, Text, HrefLink } from "../styles/Text";
 
 const SignUp = ({ signUpStart }) => {
   const [displayName, setDisplayName] = useState("");
@@ -48,9 +50,9 @@ const SignUp = ({ signUpStart }) => {
   };
 
   return (
-    <section className="content">
-      <span className="title">Sign Up</span>
-      <form className="form" onSubmit={handleSubmit}>
+    <SignUpContainer>
+      <Heading>Sign Up</Heading>
+      <Form onSubmit={handleSubmit}>
         <FormInput
           name="displayName"
           type="string"
@@ -86,18 +88,14 @@ const SignUp = ({ signUpStart }) => {
           handleChange={handleChange}
           required
         />
-      </form>
+      </Form>
 
       <Button title="Sign Up" handleClick={handleClick} />
-
-      <span className="text">
+      <Text>
         {" "}
-        Already have an account? Sign in{" "}
-        <a href="/login" className="text-p-highlight">
-          here
-        </a>
-      </span>
-    </section>
+        Already have an account? Sign in <HrefLink href="/login">here</HrefLink>
+      </Text>
+    </SignUpContainer>
   );
 };
 

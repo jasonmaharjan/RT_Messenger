@@ -4,7 +4,7 @@ import { logInSuccess, logInFailure } from "./user.actions";
 import { signUpSuccess, signUpFailure } from "./user.actions";
 import { logOutSuccess, logOutFailure } from "./user.actions";
 
-import { login, signup, logout } from "../../axios";
+import { login, signup, logout } from "../../api/axios";
 
 // Generator functions
 export function* logInWithEmail({ payload: { email, password } }) {

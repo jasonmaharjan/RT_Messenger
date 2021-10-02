@@ -5,7 +5,7 @@ import {
   toggleCreateServer,
 } from "../../redux/server/server.actions";
 
-import FormInput from "../formInput/formInput.component";
+import FormInput from "../formInput.component";
 import Button from "../../components/button/button.component";
 
 import "./createServer.scss";

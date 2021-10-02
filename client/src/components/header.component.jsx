@@ -1,21 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logOutStart } from "../../redux/user/user.actions";
+import { logOutStart } from "../redux/user/user.actions";
 import {
   HeaderContainer,
   Logo,
   Links,
   StyledLink,
   Logout,
-} from "../../styles/Header";
-import "./header.styles.scss";
+} from "../styles/Header";
 
 const Header = ({ logOutStart }) => {
   const token = localStorage.getItem("token");
   return (
     <>
       <HeaderContainer>
-        <Logo>Chat</Logo>
+        <Logo>RT Messenger</Logo>
         <Links>
           <StyledLink to="/about">About</StyledLink>
           {!token ? <StyledLink to="/signup">Signup</StyledLink> : null}
