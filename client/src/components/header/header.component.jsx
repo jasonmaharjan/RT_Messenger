@@ -1,45 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOutStart } from "../../redux/user/user.actions";
-
+import {
+  HeaderContainer,
+  Logo,
+  Links,
+  StyledLink,
+  Logout,
+} from "../../styles/Header";
 import "./header.styles.scss";
 
 const Header = ({ logOutStart }) => {
   const token = localStorage.getItem("token");
   return (
-    <section className="header">
-      <div className="header-logo">Chat</div>
-
-      <div className="header-links">
-        <Link className="header-link" to="/about">
-          About
-        </Link>
-
-        {!token ? (
-          <Link className="header-link" to="/signup">
-            Signup
-          </Link>
-        ) : null}
-
-        {token ? (
-          <Link className="header-link" to="/chat">
-            Chat
-          </Link>
-        ) : null}
-
-        {!token ? (
-          <Link className="header-link" to="/login">
-            Login
-          </Link>
-        ) : (
-          <span className="header-link" onClick={logOutStart}>
-            {" "}
-            Logout
-          </span>
-        )}
-      </div>
-    </section>
+    <>
+      <HeaderContainer>
+        <Logo>Chat</Logo>
+        <Links>
+          <StyledLink to="/about">About</StyledLink>
+          {!token ? <StyledLink to="/signup">Signup</StyledLink> : null}
+          {token ? <StyledLink to="/chat">Chat</StyledLink> : null}
+          {!token ? (
+            <StyledLink to="/login">Login</StyledLink>
+          ) : (
+            <Logout onClick={logOutStart}> Logout</Logout>
+          )}
+        </Links>
+      </HeaderContainer>
+    </>
   );
 };
 

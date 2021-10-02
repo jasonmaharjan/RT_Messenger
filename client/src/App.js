@@ -6,11 +6,13 @@ import SignUp from "./pages/signup/signup.component";
 import About from "./pages/about/about.component";
 import ChatPage from "./pages/chatpage/chatpage.component";
 
-import "./App.scss";
+//import "./App.scss";
+import GlobalStyles from "./styles/GlobalStyles";
 
 const App = () => {
   return (
-    <div className="App">
+    <>
+      <GlobalStyles />
       <Header />
       <Switch>
         <Route exact path="/about" component={About} />
@@ -30,7 +32,7 @@ const App = () => {
           }
         />
       </Switch>
-    </div>
+    </>
   );
 };
 
