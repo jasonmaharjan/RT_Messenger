@@ -23,6 +23,7 @@ export const SignUpContainer = styled.div`
 
 export const LoginContainer = styled.div`
   ${style}
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;

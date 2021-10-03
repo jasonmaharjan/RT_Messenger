@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Text = styled.div`
+  margin-top: 1rem;
   color: $grey-light;
   font-family: inherit;
   font-size: 1.2rem;

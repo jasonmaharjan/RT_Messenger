@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.div`
-  margin: 1rem;
+  width: max-content;
   background-color: var(--grey-darker);
   border: none;
   border-radius: 0.5rem;

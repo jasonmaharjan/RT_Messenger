@@ -12,7 +12,7 @@ export const Input = styled.input`
   font-family: inherit;
   font-size: 0.95rem;
   color: var(--grey-darker);
-  width: 20vw;
+  min-width: 20rem;
   height: 0.9rem;
   font-weight: 700;
   border-radius: 0.5rem;
