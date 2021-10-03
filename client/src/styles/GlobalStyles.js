@@ -27,15 +27,22 @@ const GlobalStyles = createGlobalStyle`
         font-family: var(--font-primary);
         color: white;
     }
-    body {
+
+    body { 
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      font-family: "ink free", monospace;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;      
+      -moz-osx-font-smoothing: grayscale;
+      background-color: var(--background);
     }
     
     code {
       font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
     }
+    
     #root {
       height: 100vh;
       overflow-y: auto;
