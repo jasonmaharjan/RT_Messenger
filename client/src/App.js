@@ -4,7 +4,7 @@ import Header from "./components/header.component";
 import Login from "./pages/login.component";
 import SignUp from "./pages/signup.component";
 import About from "./pages/about.component";
-import ChatPage from "./pages/chatpage/chatpage.component";
+import ChatPage from "./pages/chatpage.component";
 
 import GlobalStyles from "./styles/GlobalStyles";
 
