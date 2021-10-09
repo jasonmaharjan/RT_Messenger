@@ -1,15 +1,18 @@
 @import "../sass/styles.scss";
 
 .server-name {
-  padding-top: 2vw;
-  height: 60%;
+  padding: 0 2rem 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   grid-row: 1 / 2;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   border-bottom: 1px solid $primary;
 }
 
 .chatrooms {
   grid-row: 2 / 3;
+  padding: 1rem 2rem;
 
   &-list {
     position: absolute;
@@ -17,8 +20,8 @@
     list-style-type: none;
 
     &-chatroom {
-      height: 4vw;
-      margin-bottom: 2vw;
+      height: 3rem;
+      margin-bottom: 1rem;
       border-radius: 50%;
 
       &-name {
@@ -31,7 +34,7 @@
         padding: 0 4rem 0 0.5rem;
         background-color: transparent;
         font-family: inherit;
-        font-size: 1.15rem;
+        font-size: 1rem;
         color: $grey-light;
         border-radius: 0.5rem;
         outline-style: none;
@@ -52,14 +55,14 @@
 
 .user {
   grid-row: 3 / 4;
-  height: 3vw;
-  width: 8vw;
+  height: 3rem;
+  width: 10rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border: none;
   margin-left: 2rem;
-  padding: 0 4rem 0 4rem;
+  padding: 0 1rem;
   background-color: #1c1b2193;
   font-family: inherit;
   font-size: 1rem;

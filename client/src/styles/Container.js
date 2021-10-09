@@ -34,42 +34,35 @@ export const ChatPageContainer = styled.div`
   background-color: var(--grey-m-dark);
   margin: 0.5rem 10px 0;
   min-height: 90vh;
-  display: flex;
-  position: relative;
-  //flex-wrap: wrap;
-  //justify-content: center;
-  // display: grid;
-  // grid-template-columns:
-  //     [server-start]8% [server-end
-  //     chatroom-start] 22% [chatroom-end chat-start] 55% [chat-end members-start] 1fr [members-end];
+  display: grid;
+  grid-template-columns: [server-start]90px [server-end chatroom-start] max-content [chatroom-end chat-start] 1fr [chat-end members-start] max-content [members-end];
 `;
 
 export const ServerListContainer = styled.div`
-  width: 100px;
-  //grid-column: server-start / server-end;
+  grid-column: server-start / server-end;
   border-radius: 0.5rem 0 0 0.5rem;
-  background-color: $grey-darker;
+  background-color: var(--grey-darker);
   position: relative;
 `;
 
 export const ChatRoomsContainer = styled.div`
   grid-column: chatroom-start / chatroom-end;
-  background-color: $grey-dark;
+  background-color: var(--grey-dark);
   display: grid;
-  grid-template-rows: 5vw 1fr 4vw;
+  grid-template-rows: 4rem 1fr 4vw;
 `;
 
 export const ChatContainer = styled.div`
   grid-column: chat-start / chat-end;
-  background-color: $grey-m-dark;
+  background-color: var(--grey-m-dark);
   display: grid;
-  grid-template-rows: 5vw 1fr 4vw;
+  grid-template-rows: 4rem 1fr 4vw;
 `;
 
 export const MembersContainer = styled.div`
   grid-column: members-start / members-end;
-  background-color: $grey-dark;
+  background-color: var(--grey-dark);
   display: grid;
-  grid-template-rows: 5vw min-content 1fr;
+  grid-template-rows: 4rem 1fr;
   border-radius: 0 0.5rem 0.5rem 0;
 `;
