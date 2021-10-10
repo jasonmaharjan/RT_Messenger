@@ -5,8 +5,8 @@ const style = css`
   background-color: var(--grey-m-dark);
   margin: 0.5rem 10px 0;
   display: flex;
-  min-height: 90vh;
-  max-height: 90vh;
+  min-height: 92vh;
+  max-height: 92vh;
 `;
 
 export const AboutContainer = styled.div`
@@ -34,10 +34,10 @@ export const ChatPageContainer = styled.div`
   border-radius: 0.5rem;
   background-color: var(--grey-m-dark);
   margin: 0.5rem 10px 0;
-  min-height: 90vh;
-  max-height: 90vh;
+  min-height: 92vh;
+  max-height: 92vh;
   display: grid;
-  grid-template-columns: [server-start]90px [server-end chatroom-start] max-content [chatroom-end chat-start] 1fr [chat-end members-start] max-content [members-end];
+  grid-template-columns: [server-start]5rem [server-end chatroom-start] 15rem [chatroom-end chat-start] 1fr [chat-end members-start] 10rem [members-end];
 `;
 
 export const ServerListContainer = styled.div`
@@ -45,6 +45,7 @@ export const ServerListContainer = styled.div`
   border-radius: 0.5rem 0 0 0.5rem;
   background-color: var(--grey-darker);
   position: relative;
+  max-height: 92vh;
 `;
 
 export const ChatRoomsContainer = styled.div`
@@ -52,6 +53,7 @@ export const ChatRoomsContainer = styled.div`
   background-color: var(--grey-dark);
   display: grid;
   grid-template-rows: 4rem 1fr min-content;
+  max-height: 92vh;
 `;
 
 export const ChatContainer = styled.div`
@@ -59,7 +61,7 @@ export const ChatContainer = styled.div`
   background-color: var(--grey-m-dark);
   display: grid;
   grid-template-rows: 4rem 1fr 3rem;
-  max-height: 90vh;
+  max-height: 92vh;
 `;
 
 export const MembersContainer = styled.div`

@@ -22,7 +22,7 @@ const ChatRooms = () => {
       name: "boredom_room",
     },
     {
-      name: "super secret group",
+      name: "super secret",
     },
   ];
 

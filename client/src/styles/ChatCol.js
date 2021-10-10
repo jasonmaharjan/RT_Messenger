@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ChatRoom = styled.div`
-  padding: 0 2rem 0 2rem;
+  margin: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@ export const ChatRoom = styled.div`
 
 export const ChatContainer = styled.ul`
   list-style: none;
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -33,13 +33,8 @@ export const ChatContainer = styled.ul`
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: var(--grey-dark);
-    border-radius: 2rem;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
     background: var(--grey-darker);
+    border-radius: 2rem;
   }
 `;
 
@@ -76,14 +71,14 @@ export const ChatMessage = styled.div`
 
 export const MessageBox = styled.div`
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 `;
 
 export const MessageBoxInput = styled.input`
   width: 100%;
   outline-style: none;
   border: none;
-  padding: 0.5rem 1.25rem 0.2rem 1.25rem;
+  padding: 0.5rem 1.25rem 0.25rem 1.25rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   font-family: inherit;

@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const ServerName = styled.div`
-  padding: 0 2rem 0 2rem;
+  margin: 0 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   grid-row: 1 / 2;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   border-bottom: 1px solid var(--primary);
 `;
 
 export const ChatRoomList = styled.div`
-  padding: 1rem 2rem;
+  padding: 1.5rem;
   grid-row: 2 /3;
   list-style-type: none;
 `;

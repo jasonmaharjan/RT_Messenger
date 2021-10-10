@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.section`
-  height: 4vh;
+  height: 2vh;
   margin: 1rem 0rem;
   display: flex;
   align-items: center;

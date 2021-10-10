@@ -6,7 +6,7 @@ import { selectToggle } from "../redux/server/server.selectors";
 import ServerCol from "../components/servers-list.component";
 import ChatRoomCol from "../components/chatrooms-list.component";
 import ChatCol from "../components/chat.component";
-import MembersCol from "../components/members/members.component";
+import MembersCol from "../components/members.component";
 
 import CreateServer from "../components/dialog-box/createServer.component";
 
