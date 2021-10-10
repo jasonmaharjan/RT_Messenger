@@ -45,7 +45,7 @@ const GlobalStyles = createGlobalStyle`
     
     #root {
       height: 100vh;
-      overflow-y: auto;
+      overflow: hidden;
     }
 `;
 

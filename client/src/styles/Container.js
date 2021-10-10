@@ -3,9 +3,10 @@ import styled, { css } from "styled-components";
 const style = css`
   border-radius: 0.95rem;
   background-color: var(--grey-m-dark);
-  margin: 0 5vw;
+  margin: 0.5rem 10px 0;
   display: flex;
-  min-height: 85vh;
+  min-height: 90vh;
+  max-height: 90vh;
 `;
 
 export const AboutContainer = styled.div`
@@ -34,6 +35,7 @@ export const ChatPageContainer = styled.div`
   background-color: var(--grey-m-dark);
   margin: 0.5rem 10px 0;
   min-height: 90vh;
+  max-height: 90vh;
   display: grid;
   grid-template-columns: [server-start]90px [server-end chatroom-start] max-content [chatroom-end chat-start] 1fr [chat-end members-start] max-content [members-end];
 `;
@@ -56,7 +58,8 @@ export const ChatContainer = styled.div`
   grid-column: chat-start / chat-end;
   background-color: var(--grey-m-dark);
   display: grid;
-  grid-template-rows: 4rem 1fr 4vw;
+  grid-template-rows: 4rem 1fr 3rem;
+  max-height: 90vh;
 `;
 
 export const MembersContainer = styled.div`

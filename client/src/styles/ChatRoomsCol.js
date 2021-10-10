@@ -33,7 +33,7 @@ export const ChatRoomBtn = styled.button`
   background-color: transparent;
   font-family: inherit;
   font-size: 1rem;
-  color: $grey-light;
+  color: var(--grey-light);
   border-radius: 0.5rem;
   outline-style: none;
   transition: all 0.2s;
@@ -60,7 +60,7 @@ export const UserRow = styled.div`
   background-color: #1c1b2193;
   font-family: inherit;
   font-size: 1rem;
-  color: $grey-light;
+  color: var(--grey-light);
 `;
 
 export const UserName = styled.span`
@@ -79,6 +79,6 @@ export const UserStatus = styled.span`
   margin-right: auto;
   height: 0.5rem;
   width: 0.5rem;
-  background-color: $green;
+  background-color: var(--green);
   border-radius: 50%;
 `;
