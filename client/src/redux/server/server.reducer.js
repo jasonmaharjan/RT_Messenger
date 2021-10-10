@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   servers: [],
   toggleFlag: false,
   error: null,
+  serverAdded: false,
 };
 
 const ServerReducer = (state = INITIAL_STATE, action) => {
@@ -19,6 +20,7 @@ const ServerReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         servers: [...state.servers, action.payload],
+        serverAdded: true,
       };
 
     case ServerActionTypes.ARRANGE_SERVER_LIST_SUCCESS:
@@ -40,6 +42,9 @@ const ServerReducer = (state = INITIAL_STATE, action) => {
         ...state,
         toggleFlag: !state.toggleFlag,
       };
+
+    case ServerActionTypes.RESTORE_SERVER_ADDED_FLAG:
+      return { ...state, serverAdded: false };
 
     default:
       return state;

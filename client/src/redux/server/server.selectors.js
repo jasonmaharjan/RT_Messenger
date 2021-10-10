@@ -16,3 +16,8 @@ export const selectError = createSelector(
   [selectserver],
   (server) => server.error
 );
+
+export const selectServerAdded = createSelector(
+  [selectserver],
+  (server) => server.serverAdded
+);

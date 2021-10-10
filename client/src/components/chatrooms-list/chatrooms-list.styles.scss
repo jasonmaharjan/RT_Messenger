@@ -55,19 +55,17 @@
 
 .user {
   grid-row: 3 / 4;
-  height: 3rem;
-  width: 10rem;
+  min-height: 3rem;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border: none;
-  margin-left: 2rem;
-  padding: 0 1rem;
+  padding: 0 2rem;
   background-color: #1c1b2193;
   font-family: inherit;
   font-size: 1rem;
   color: $grey-light;
-  border-radius: 0.5rem;
 
   &-display-name {
     color: $primary;

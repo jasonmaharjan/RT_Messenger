@@ -49,7 +49,7 @@ export const ChatRoomsContainer = styled.div`
   grid-column: chatroom-start / chatroom-end;
   background-color: var(--grey-dark);
   display: grid;
-  grid-template-rows: 4rem 1fr 4vw;
+  grid-template-rows: 4rem 1fr min-content;
 `;
 
 export const ChatContainer = styled.div`

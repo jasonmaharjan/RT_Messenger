@@ -1,41 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { createStructuredSelector } from "reselect";
-import { selectServer } from "../../redux/server/server.selectors";
+import {
+  selectServer,
+  selectServerAdded,
+} from "../../redux/server/server.selectors";
 import {
   getServerData,
   toggleCreateServer,
   arrangeServerList,
 } from "../../redux/server/server.actions";
 
-import "./servers-list.styles.scss";
+import { ThemeProvider } from "styled-components";
+
+import {
+  ServersListContainer,
+  Servers,
+  ServerBtn,
+  ServerName,
+  ServerSelect,
+} from "../../styles/ServerColumn";
 
 const ServersList = ({
   currentUser,
   servers,
   getServerData,
   toggleCreateServer,
-  arrangeServerList,
+  serverAdded,
 }) => {
   const token = localStorage.getItem("token");
+  const [serverSelected, setServerSelected] = useState(false);
+  const [serverPosition, setServerPosition] = useState(null);
+
+  // create an array of refs for the servers
+  const serverRefs = useRef(servers.map(() => React.createRef())); // e.g. {current: [0: {current}, 1: {current}]}
+  console.log(serverRefs);
 
   useEffect(() => {
     if (token) {
       getServerData(token);
     }
   }, []);
-  const [click, setClick] = useState(false);
 
-  const handleClick = () => {
-    setClick(!click);
+  useEffect(() => {
+    if (serverAdded) {
+      window.location.reload();
+    }
+  }, [serverAdded]);
+
+  const handleClick = (index) => {
+    if (serverRefs.current) {
+      setServerPosition(
+        serverRefs.current[index].current.getBoundingClientRect().y
+      );
+    }
+    setServerSelected(true);
   };
 
   const handleCreateServer = () => {
     toggleCreateServer();
   };
 
-  const getAbb = (name) => {
+  // display the abbreviation of the servername
+  const getServerAbv = (name) => {
     const nameArr = name.split(" ");
     var abbreviation = "";
     for (var i = 0; i <= nameArr.length - 1; i++) {
@@ -44,68 +72,43 @@ const ServersList = ({
       }
       abbreviation += nameArr[i].charAt(0);
     }
-    return <span className="servers-list-server-name-abb">{abbreviation}</span>;
+    return <ServerName>{abbreviation}</ServerName>;
   };
 
-  const handleDragEnd = ({ destination, source }) => {
-    // console.log('source',source)
-    // console.log('destination',destination)
-
-    if (!destination) {
-      console.log("null");
-      return;
-    }
-    if (
-      destination.index === source.index &&
-      destination.droppableId === source.droppableId
-    ) {
-      return;
-    }
-    if (
-      source.index === servers.length - 1 ||
-      destination.index === servers.length - 1
-    ) {
-      return;
-    }
-
-    const sourceItem = servers[source.index];
-    const destItem = servers[destination.index];
-
-    const data = { sourceItem, source, destination, token };
-    arrangeServerList(data);
+  const theme = {
+    serverPosition: serverPosition,
   };
 
   return (
-    <div className="servers">
-      {click ? <div className="btn-click">{""}</div> : null}
-      <ul className="servers-list">
+    <ThemeProvider theme={theme}>
+      {serverSelected ? (
+        <ServerSelect position={serverPosition}>{""}</ServerSelect>
+      ) : null}
+
+      <ServersListContainer>
         {servers
           ? servers.map((server, index) => (
-              <li className="servers-list-server" key={index}>
-                <button
-                  className="servers-list-server-name"
-                  onClick={handleClick}
+              <Servers key={index}>
+                <ServerBtn
+                  onClick={() => handleClick(index)}
+                  ref={serverRefs.current[index]}
                 >
-                  {getAbb(server.serverName)}
-                </button>
-              </li>
+                  {getServerAbv(server.serverName)}
+                </ServerBtn>
+              </Servers>
             ))
           : null}
-        <li className="servers-list-server" key={1}>
-          <button
-            className="servers-list-server-name"
-            onClick={handleCreateServer}
-          >
-            +
-          </button>
-        </li>
-      </ul>
-    </div>
+        <Servers key={1}>
+          <ServerBtn onClick={handleCreateServer}>+</ServerBtn>
+        </Servers>
+      </ServersListContainer>
+    </ThemeProvider>
   );
 };
 
 const MapStateToProps = createStructuredSelector({
   servers: selectServer,
+  serverAdded: selectServerAdded,
 });
 
 const MapDispatchToProps = (dispatch) => ({

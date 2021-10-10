@@ -8,6 +8,8 @@ import {
   arrangeServerListFailure,
 } from "./server.actions";
 
+import { restoreServerAddedFlag } from "./server.actions";
+
 import {
   getServerData,
   createServerData,
@@ -30,6 +32,7 @@ export function* createServer({ payload }) {
     const serverData = yield call(createServerData, payload);
     if (serverData) {
       yield put(createServerSuccess(serverData));
+      yield put(restoreServerAddedFlag());
     } else {
       yield put(createServerFailure("error creating server"));
     }

@@ -50,3 +50,7 @@ export const arrangeServerListFailure = (error) => ({
   type: ServerActionTypes.ARRANGE_SERVER_LIST_FAILURE,
   payload: error,
 });
+
+export const restoreServerAddedFlag = () => ({
+  type: ServerActionTypes.RESTORE_SERVER_ADDED_FLAG,
+});
