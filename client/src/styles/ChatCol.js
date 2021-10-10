@@ -40,14 +40,15 @@ export const ChatContainer = styled.ul`
 
 export const ChatEntry = styled.li`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 1.5rem;
 `;
 
 export const UserImage = styled.div`
+  margin-top: 0.5rem;
   height: 2.5rem;
   width: 2.5rem;
-  padding: 0 1rem;
+  padding: 1rem;
   border-radius: 50%;
   background: url("https://lh3.googleusercontent.com/proxy/b46jPrVLsYi-twhmaGUbIeAN5OwOGqJCWowRB7xMKOEOhUCXOBYS3by9CYCYHmyYqwbgW-A5VJRqUvLTK2Zt3evvicjCYt6uM7plwU6wooO9ysRiJeYpVRQdV882-bvx0tEItcaNrKI");
   background-repeat: no-repeat;
@@ -56,7 +57,8 @@ export const UserImage = styled.div`
 `;
 
 export const ChatEntryContent = styled.div`
-  padding: 0 1rem;
+  padding: 0 1rem 0 0.75rem;
+  width: 100%;
 `;
 
 export const DisplayName = styled.div`
@@ -84,7 +86,6 @@ export const MessageBoxInput = styled.input`
   font-family: inherit;
   color: white;
   background-color: var(--grey-dark);
-
   -webkit-input-placeholder {
     color: var(--grey-light);
     font-family: inherit;

@@ -17,11 +17,12 @@ const Chat = () => {
     {
       displayName: "SojhoKto",
       message:
-        "Yalllo everyone what is up? Yalllo everyone what is up? Yalllo everyone what is up? Yalllo everyone what is up? Yalllo everyone what is up?",
+        "Yalllo everyone what is up? Yalllo everyone what is up? Yalllo everyone what is up? Yalllo everyone what is up? Yalllo everyone what is up? Yalllo everyone what is up? Yalllo everyone what is up? Yalllo everyone what is up? Yalllo everyone what is up?",
     },
     {
       displayName: "PogMaster",
-      message: "Yalo yalo nothin much just chillin",
+      message:
+        " Yalo yalo nothin much just chillinYalo yalo nothin much just chillinYalo yalo nothin much just chillinYalo yalo nothin much just chillinYalo yalo nothin much just chillinYalo yalo nothin much just chillinYalo yalo nothin much just chillinYalo yalo nothin much just chillinYalo yalo nothin much just chillinYalo yalo nothin much just chillin",
     },
     {
       displayName: "SojhoKto",
