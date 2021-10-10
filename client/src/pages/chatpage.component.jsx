@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectToggle } from "../redux/server/server.selectors";
 
-import ServerCol from "../components/servers-list/servers-list.component";
-import ChatRoomCol from "../components/chatrooms-list/chatrooms-list.component";
+import ServerCol from "../components/servers-list.component";
+import ChatRoomCol from "../components/chatrooms-list.component";
 import ChatCol from "../components/chat/chat.component";
 import MembersCol from "../components/members/members.component";
 

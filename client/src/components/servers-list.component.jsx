@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { createStructuredSelector } from "reselect";
 import {
   selectServer,
   selectServerAdded,
-} from "../../redux/server/server.selectors";
+} from "../redux/server/server.selectors";
 import {
   getServerData,
   toggleCreateServer,
   arrangeServerList,
-} from "../../redux/server/server.actions";
+} from "../redux/server/server.actions";
 
 import { ThemeProvider } from "styled-components";
 
@@ -20,7 +19,7 @@ import {
   ServerBtn,
   ServerName,
   ServerSelect,
-} from "../../styles/ServerColumn";
+} from "../styles/ServerCol";
 
 const ServersList = ({
   currentUser,
@@ -35,7 +34,6 @@ const ServersList = ({
 
   // create an array of refs for the servers
   const serverRefs = useRef(servers.map(() => React.createRef())); // e.g. {current: [0: {current}, 1: {current}]}
-  console.log(serverRefs);
 
   useEffect(() => {
     if (token) {
