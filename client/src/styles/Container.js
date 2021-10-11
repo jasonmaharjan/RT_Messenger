@@ -71,3 +71,9 @@ export const MembersContainer = styled.div`
   grid-template-rows: 4rem 1fr;
   border-radius: 0 0.5rem 0.5rem 0;
 `;
+
+export const ErrorContainer = styled.div`
+  ${style}
+  padding: 6rem;
+  justify-content: center;
+`;

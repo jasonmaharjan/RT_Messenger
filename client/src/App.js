@@ -1,10 +1,12 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/header.component";
-import Login from "./pages/login.component";
-import SignUp from "./pages/signup.component";
-import About from "./pages/about.component";
-import ChatPage from "./pages/chatpage.component";
+import ErrorBoundary from "./components/errorBoundary.component";
+
+import About from "./pages/about";
+import Login from "./pages/login";
+import SignUp from "./pages/signup";
+import ChatPage from "./pages/chatpage";
 
 import GlobalStyles from "./styles/GlobalStyles";
 
@@ -19,17 +21,19 @@ const App = () => {
 
         <Route path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
-        <Route
-          exact
-          path="/chat"
-          render={() =>
-            localStorage.getItem("token") ? (
-              <ChatPage />
-            ) : (
-              <Redirect to="/login" />
-            )
-          }
-        />
+        <ErrorBoundary>
+          <Route
+            exact
+            path="/chat"
+            render={() =>
+              localStorage.getItem("token") ? (
+                <ChatPage />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+        </ErrorBoundary>
       </Switch>
     </>
   );
