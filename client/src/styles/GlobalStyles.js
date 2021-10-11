@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
         --background: #595a5c;
         --grey-light: #e5e6e7;
         --grey-m: #707070;
+        --grey-hover: #1c1b2193;
         --grey-m-dark: #383841;
         --grey-dark: #292930;
         --grey-darker: #1c1b21;
@@ -16,6 +17,8 @@ const GlobalStyles = createGlobalStyle`
         --green: #1ac200;
         --purple: #9100ff;
         --highlight: #797979;
+        --hsl-light: hsl(188, 6%, 60%);
+        --hsl-dark: hsl(188, 6%, 70%);
     }
         
     *{

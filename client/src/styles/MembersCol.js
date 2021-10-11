@@ -6,11 +6,11 @@ const skeleton = css`
 
   @keyframes skeletonLoading {
     0% {
-      background-color: hsl(188, 6%, 60%);
+      background-color: var(--hsl-light);
     }
 
     100% {
-      background-color: hsl(188, 6%, 70%);
+      background-color: var(--hsl-dark);
     }
   }
 `;

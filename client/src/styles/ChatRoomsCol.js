@@ -39,12 +39,12 @@ export const ChatRoomBtn = styled.button`
   transition: all 0.2s;
 
   &:hover {
-    background-color: #1c1b2193;
+    background-color: var(--grey-hover);
     cursor: pointer;
   }
 
   &:focus {
-    background-color: #1c1b2193;
+    background-color: var(--grey-hover);
   }
 `;
 
@@ -57,7 +57,7 @@ export const UserRow = styled.div`
   align-items: center;
   border: none;
   padding: 0 2rem;
-  background-color: #1c1b2193;
+  background-color: var(--grey-hover);
   font-family: inherit;
   font-size: 1rem;
   color: var(--grey-light);
