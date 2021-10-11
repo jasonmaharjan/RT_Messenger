@@ -1,4 +1,19 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const skeleton = css`
+  opacity: 0.8;
+  animation: skeletonLoading 0.8s linear infinite alternate;
+
+  @keyframes skeletonLoading {
+    0% {
+      background-color: hsl(188, 6%, 60%);
+    }
+
+    100% {
+      background-color: hsl(188, 6%, 70%);
+    }
+  }
+`;
 
 export const MembersTitle = styled.div`
   margin: 0 1.5rem;
@@ -64,4 +79,22 @@ export const MembersName = styled.li`
   grid-column: 2 / 3;
   font-size: 0.75rem;
   color: ${(props) => (props.status === "online" ? `inherit` : `grey`)};
+`;
+
+export const SkeletonMembersName = styled.li`
+  ${skeleton};
+  height: 0.75rem;
+  width: 3rem;
+  border-radius: 0.25rem;
+  align-self: center;
+  justify-self: flex-start;
+  grid-column: 2 / 3;
+`;
+
+export const SkeletonMembersImage = styled.div`
+  ${skeleton};
+  grid-column: 1 / 2;
+  height: 2rem;
+  padding: 0 1rem;
+  border-radius: 50%;
 `;

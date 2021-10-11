@@ -1,4 +1,19 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const skeleton = css`
+  opacity: 0.8;
+  animation: skeletonLoading 0.8s linear infinite alternate;
+
+  @keyframes skeletonLoading {
+    0% {
+      background-color: hsl(188, 6%, 60%);
+    }
+
+    100% {
+      background-color: hsl(188, 6%, 70%);
+    }
+  }
+`;
 
 export const ChatRoom = styled.div`
   margin: 0 1.5rem;
@@ -44,6 +59,15 @@ export const ChatEntry = styled.li`
   margin-bottom: 1.5rem;
 `;
 
+export const SkeletonUserImage = styled.div`
+  margin-top: 0.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 1rem;
+  border-radius: 50%;
+  ${skeleton};
+`;
+
 export const UserImage = styled.div`
   margin-top: 0.5rem;
   height: 2.5rem;
@@ -61,9 +85,27 @@ export const ChatEntryContent = styled.div`
   width: 100%;
 `;
 
+export const SkeletonDisplayName = styled.div`
+  ${skeleton};
+  height: 0.75rem;
+  width: 4rem;
+  border-radius: 0.25rem;
+  text-align: left;
+  font-size: 1rem;
+`;
+
 export const DisplayName = styled.div`
   color: var(--primary);
   text-align: left;
+  font-size: 1rem;
+`;
+
+export const SkeletonChatMessage = styled.div`
+  ${skeleton};
+  margin-top: 0.5rem;
+  height: 0.75rem;
+  width: 6vw;
+  border-radius: 0.25rem;
   font-size: 1rem;
 `;
 

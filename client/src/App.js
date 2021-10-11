@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Header from "./components/header.component";
-import ErrorBoundary from "./components/errorBoundary.component";
+import Header from "./components/header";
+import ErrorBoundary from "./components/errorBoundary";
 
 import About from "./pages/about";
 import Login from "./pages/login";
