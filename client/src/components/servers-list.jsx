@@ -22,7 +22,6 @@ import {
 } from "../styles/ServerCol";
 
 const ServersList = ({
-  currentUser,
   servers,
   getServerData,
   toggleCreateServer,
@@ -65,7 +64,7 @@ const ServersList = ({
     const nameArr = name.split(" ");
     var abbreviation = "";
     for (var i = 0; i <= nameArr.length - 1; i++) {
-      if (i === 4) {
+      if (i === 3) {
         break;
       }
       abbreviation += nameArr[i].charAt(0);

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
-import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
 export const HeaderContainer = styled.section`

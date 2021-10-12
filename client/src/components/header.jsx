@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { logOutStart } from "../redux/user/user.actions";
 import { changeTheme } from "../redux/settings/settings.actions";
-import {
-  selectAllThemes,
-  selectTheme,
-} from "../redux/settings/settings.selectors";
+import { selectAllThemes } from "../redux/settings/settings.selectors";
 import { createStructuredSelector } from "reselect";
 import {
   HeaderContainer,
@@ -27,17 +24,31 @@ const Header = ({ changeTheme, allThemes, logOutStart }) => {
     SetThemeClicked(!themeClicked);
   };
 
+  const themeRef = useRef();
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+
+    // cleanup function
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  });
+
+  // close theme dropdown if clicked elsewhere
+  const handleClickOutside = (event) => {
+    if (!themeRef.current.contains(event.target)) SetThemeClicked(false);
+  };
+
   const theme = {
     themeClicked: false,
   };
-
   return (
     <ThemeProvider theme={theme}>
       <HeaderContainer>
         <Logo>RT Messenger</Logo>
         <Links>
           <StyledLink to="/about">About</StyledLink>
-          <Theme value={Theme} onClick={handleThemeClick}>
+          <Theme ref={themeRef} value={Theme} onClick={handleThemeClick}>
             Themes
             {themeClicked ? (
               <ThemeSelect>
