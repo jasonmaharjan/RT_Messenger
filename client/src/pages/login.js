@@ -68,10 +68,7 @@ const Login = ({ logInStart }) => {
       <Button title="Login" handleClick={handleClick} />
       <Text>
         {" "}
-        Don't have an account? Sign up{" "}
-        <HrefLink href="/signup" className="text-p-highlight">
-          here
-        </HrefLink>
+        Don't have an account? Sign up <HrefLink href="/signup">here</HrefLink>
       </Text>
     </LoginContainer>
   );

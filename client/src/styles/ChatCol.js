@@ -74,7 +74,7 @@ export const UserImage = styled.div`
   width: 2.5rem;
   padding: 1rem;
   border-radius: 50%;
-  background: url("https://lh3.googleusercontent.com/proxy/b46jPrVLsYi-twhmaGUbIeAN5OwOGqJCWowRB7xMKOEOhUCXOBYS3by9CYCYHmyYqwbgW-A5VJRqUvLTK2Zt3evvicjCYt6uM7plwU6wooO9ysRiJeYpVRQdV882-bvx0tEItcaNrKI");
+  background: url("https://cutewallpaper.org/21/overlord-albedo-wallpaper-hd/Wallpaper-sake-girl-Overlord-horns-anime-brunette-.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -110,6 +110,7 @@ export const SkeletonChatMessage = styled.div`
 `;
 
 export const ChatMessage = styled.div`
+  text-align: justify;
   font-size: 1rem;
 `;
 

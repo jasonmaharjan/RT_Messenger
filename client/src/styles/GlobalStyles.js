@@ -2,23 +2,23 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
     :root {
-        --font-primary: "ink free", monospace;
-        --primary: #f3a1a1;
-        --secondary: #cc1515;    
-        --background: #595a5c;
-        --grey-light: #e5e6e7;
-        --grey-m: #707070;
-        --grey-hover: #1c1b2193;
-        --grey-m-dark: #383841;
-        --grey-dark: #292930;
-        --grey-darker: #1c1b21;
-        --primary: #0cd1ef;
-        --primary-dark: #0c7b8c;
-        --green: #1ac200;
-        --purple: #9100ff;
-        --highlight: #797979;
-        --hsl-light: hsl(188, 6%, 60%);
-        --hsl-dark: hsl(188, 6%, 70%);
+        --font-primary: ${(props) => props.theme["font-primary"]};
+        --primary: ${(props) => props.theme["primary"]};
+        --secondary: ${(props) => props.theme["secondary"]};
+        --background: ${(props) => props.theme["background"]};
+        --grey-light: ${(props) => props.theme["grey-light"]};
+        --grey-m: ${(props) => props.theme["grey-m"]};
+        --grey-hover: ${(props) => props.theme["grey-hover"]};
+        --grey-m-dark: ${(props) => props.theme["grey-m-dark"]};
+        --grey-dark: ${(props) => props.theme["grey-dark"]};
+        --grey-darker: ${(props) => props.theme["grey-darker"]};
+        --primary: ${(props) => props.theme["primary"]};
+        --primary-dark: ${(props) => props.theme["primary-dark"]};
+        --green: ${(props) => props.theme["green"]};
+        --purple: ${(props) => props.theme["purple"]};
+        --highlight: ${(props) => props.theme["highlight"]};
+        --hsl-light: ${(props) => props.theme["hsl-light"]};
+        --hsl-dark:${(props) => props.theme["hsl-dark"]};
     }
         
     *{
