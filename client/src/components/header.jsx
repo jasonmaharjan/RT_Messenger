@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { logOutStart } from "../redux/user/user.actions";
 import { changeTheme } from "../redux/settings/settings.actions";
@@ -7,8 +7,6 @@ import {
   selectTheme,
 } from "../redux/settings/settings.selectors";
 import { createStructuredSelector } from "reselect";
-
-import { DefaultTheme, BrownTheme, PurpleTheme } from "../styles/Themes";
 import {
   HeaderContainer,
   Logo,
@@ -21,17 +19,12 @@ import {
 } from "../styles/Header";
 import { ThemeProvider } from "styled-components";
 
-const Header = ({ changeTheme, logOutStart, allThemes, currentTheme }) => {
+const Header = ({ changeTheme, allThemes, logOutStart }) => {
   const [themeClicked, SetThemeClicked] = useState(false);
-  const [themes, setThemes] = useState(allThemes);
   const token = localStorage.getItem("token");
 
   const handleThemeClick = () => {
     SetThemeClicked(!themeClicked);
-  };
-
-  const handleThemeSelect = (value) => {
-    //SetThemeClicked(!themeClicked);
   };
 
   const theme = {
@@ -73,7 +66,6 @@ const Header = ({ changeTheme, logOutStart, allThemes, currentTheme }) => {
 };
 
 const MapStateToProps = createStructuredSelector({
-  currentTheme: selectTheme,
   allThemes: selectAllThemes,
 });
 
