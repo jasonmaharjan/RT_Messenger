@@ -10,42 +10,51 @@ import ChatPage from "./pages/chatpage";
 
 import GlobalStyles from "./styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
-import { DefaultTheme, BrownTheme, PurpleTheme } from "./styles/Themes";
 
-const App = () => {
-  const [theme, setTheme] = useState(PurpleTheme);
-  // useEffect(() => {
-  //   // set the selected theme OR the theme stored in the local storage
-  //   setTheme();
-  // }, []);
+import { connect } from "react-redux";
+import { selectTheme } from "./redux/settings/settings.selectors";
+import { createStructuredSelector } from "reselect";
 
-  console.log(theme);
+const App = ({ currentTheme }) => {
+  const [theme, setTheme] = useState(currentTheme);
+
+  // set the current selected theme
+  useEffect(() => {
+    if (currentTheme) setTheme(currentTheme);
+  }, [currentTheme]);
+
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Header />
-      <Switch>
-        <Route exact path="/about" component={About} />
-        <Redirect exact from="/" to="/about" />
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Header />
+        <Switch>
+          <Route exact path="/about" component={About} />
+          <Redirect exact from="/" to="/about" />
 
-        <Route path="/login" component={Login} />
-        <Route exact path="/signup" component={SignUp} />
-        <ErrorBoundary>
-          <Route
-            exact
-            path="/chat"
-            render={() =>
-              localStorage.getItem("token") ? (
-                <ChatPage />
-              ) : (
-                <Redirect to="/login" />
-              )
-            }
-          />
-        </ErrorBoundary>
-      </Switch>
-    </ThemeProvider>
+          <Route path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
+          <ErrorBoundary>
+            <Route
+              exact
+              path="/chat"
+              render={() =>
+                localStorage.getItem("token") ? (
+                  <ChatPage />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />
+          </ErrorBoundary>
+        </Switch>
+      </ThemeProvider>
+    </>
   );
 };
 
-export default App;
+const MapStateToProps = createStructuredSelector({
+  currentTheme: selectTheme,
+});
+
+export default connect(MapStateToProps, null)(App);

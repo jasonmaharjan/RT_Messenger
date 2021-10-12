@@ -1,4 +1,5 @@
 export const DefaultTheme = {
+  name: "default",
   "font-primary": `"ink free", monospace`,
   primary: `#0cd1ef`,
   "primary-dark": `#0c7b8c`,
@@ -16,6 +17,7 @@ export const DefaultTheme = {
 };
 
 export const BrownTheme = {
+  name: "brown",
   "font-primary": `"ink free", monospace`,
   primary: `#f3ca20`,
   "primary-dark": `#c09e11`,
@@ -33,12 +35,13 @@ export const BrownTheme = {
 };
 
 export const PurpleTheme = {
+  name: "purple",
   "font-primary": `"ink free", monospace`,
   primary: `#ffa2ea`,
   "primary-dark": `#9d598e`,
   background: `#5c436b`,
   "grey-light": `#e5e6e7`,
-  "grey-m": `#9879ac`,
+  "grey-m": `#775f85`,
   "grey-hover": `#302437`,
   "grey-m-dark": `#2a1d32`,
   "grey-dark": `#19111e`,
