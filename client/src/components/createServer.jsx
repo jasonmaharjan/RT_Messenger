@@ -6,7 +6,7 @@ import {
 } from "../redux/server/server.actions";
 
 import FormInput from "./formInput";
-import Button from "./button.component";
+import Button from "./button";
 
 import {
   Modal,

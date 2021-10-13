@@ -8,7 +8,7 @@ import ChatRoomCol from "../components/chatroomsList";
 import ChatCol from "../components/chat";
 import MembersCol from "../components/members";
 
-import CreateServer from "../components/createServer.component";
+import CreateServer from "../components/createServer";
 
 import { chatPage } from "../api/axios";
 

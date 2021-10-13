@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { signUpStart } from "../redux/user/user.actions";
 
 import FormInput from "../components/formInput";
-import Button from "../components/button.component";
+import Button from "../components/button";
 
 import { SignUpContainer } from "../styles/Container";
 import { Form } from "../styles/Form";

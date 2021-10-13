@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { logInStart } from "../redux/user/user.actions";
 
 import FormInput from "../components/formInput";
-import Button from "../components/button.component";
+import Button from "../components/button";
 
 import { LoginContainer } from "../styles/Container";
 import { Form } from "../styles/Form";
