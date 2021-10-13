@@ -4,6 +4,7 @@ import { logInStart } from "../redux/user/user.actions";
 
 import FormInput from "../components/formInput";
 import Button from "../components/button";
+import NotificationPopup from "../components/notification";
 
 import { LoginContainer } from "../styles/Container";
 import { Form } from "../styles/Form";
@@ -43,8 +44,8 @@ const Login = ({ logInStart }) => {
 
   return (
     <LoginContainer>
+      <NotificationPopup message="Incorrect Credentials!" />
       <Heading>Login</Heading>
-
       <Form onSubmit={handleSubmit}>
         <FormInput
           name="email"
@@ -64,7 +65,6 @@ const Login = ({ logInStart }) => {
           required
         />
       </Form>
-
       <Button title="Login" handleClick={handleClick} />
       <Text>
         {" "}

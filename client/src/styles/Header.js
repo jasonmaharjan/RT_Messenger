@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import "react-dropdown/style.css";
 
 export const HeaderContainer = styled.section`
   height: 2vh;
