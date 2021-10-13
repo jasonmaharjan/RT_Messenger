@@ -3,12 +3,18 @@ import { connect } from "react-redux";
 import {
   createServer,
   toggleCreateServer,
-} from "../../redux/server/server.actions";
+} from "../redux/server/server.actions";
 
-import FormInput from "../formInput";
-import Button from "../button.component";
+import FormInput from "./formInput";
+import Button from "./button.component";
 
-import "./createServer.scss";
+import {
+  Modal,
+  ModalContent,
+  ModalHeading,
+  ModalCloseBtn,
+  ModalInput,
+} from "../styles/Modal";
 
 const CreateServer = ({ createServer, toggleCreateServer }) => {
   const token = localStorage.getItem("token");
@@ -27,7 +33,7 @@ const CreateServer = ({ createServer, toggleCreateServer }) => {
         break;
 
       default:
-        console.log("Login form fill up");
+        return null;
     }
   };
 
@@ -46,18 +52,16 @@ const CreateServer = ({ createServer, toggleCreateServer }) => {
   };
 
   return (
-    <form className="create-server-form" onSubmit={handleSubmit}>
-      <div className="create-server-form-content">
-        <span className="create-server-form-content-heading">
-          Create a server
-        </span>
-        <span
+    <Modal onSubmit={handleSubmit}>
+      <ModalContent>
+        <ModalHeading>Create a server</ModalHeading>
+        <ModalCloseBtn
           className="create-server-form-content-close"
           onClick={handleClose}
         >
           &#10006;
-        </span>
-        <div className="create-server-form-content-input">
+        </ModalCloseBtn>
+        <ModalInput>
           <FormInput
             name="serverName"
             type="string"
@@ -65,6 +69,7 @@ const CreateServer = ({ createServer, toggleCreateServer }) => {
             placeholder="server's name"
             handleChange={handleChange}
             required
+            style={{ margin: "-1rem" }}
           />
           <FormInput
             name="serverImageURL"
@@ -73,11 +78,16 @@ const CreateServer = ({ createServer, toggleCreateServer }) => {
             placeholder="server's image URL"
             handleChange={handleChange}
             required
+            style={{ margin: "0rem -1rem 1rem -1rem" }}
           />
-          <Button title="submit" handleClick={handleClick} />
-        </div>
-      </div>
-    </form>
+          <Button
+            title="submit"
+            handleClick={handleClick}
+            style={{ marginTop: "2rem" }}
+          />
+        </ModalInput>
+      </ModalContent>
+    </Modal>
   );
 };
 

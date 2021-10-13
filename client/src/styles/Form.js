@@ -5,7 +5,7 @@ export const Form = styled.form`
 `;
 
 export const FormGroup = styled.div`
-  padding: 1.25rem;
+  padding: 1rem;
 `;
 
 export const Input = styled.input`
