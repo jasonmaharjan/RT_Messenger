@@ -7,7 +7,7 @@ import ServerReducer from "./server/server.reducer";
 import SettingsReducer from "./settings/settings.reducer";
 
 const persistConfig = {
-  key: "2",
+  key: "a39aasaa73",
   storage,
   whitelist: ["user", "server", "settings"],
 };

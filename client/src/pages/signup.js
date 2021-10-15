@@ -2,6 +2,9 @@ import React, { useState } from "react";
 
 import { connect } from "react-redux";
 import { signUpStart } from "../redux/user/user.actions";
+import { selectError } from "../redux/user/user.selectors";
+import { createStructuredSelector } from "reselect";
+import { toast } from "react-toastify";
 
 import FormInput from "../components/formInput";
 import Button from "../components/button";
@@ -9,8 +12,10 @@ import Button from "../components/button";
 import { SignUpContainer } from "../styles/Container";
 import { Form } from "../styles/Form";
 import { Heading, Text, HrefLink } from "../styles/Text";
+import { Notification } from "../styles/Notification";
+import "react-toastify/dist/ReactToastify.css";
 
-const SignUp = ({ signUpStart }) => {
+const SignUp = ({ signUpStart, error }) => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,10 +52,14 @@ const SignUp = ({ signUpStart }) => {
   const handleClick = () => {
     const signUpData = { displayName, email, password, confirmPassword };
     signUpStart(signUpData);
+    if (error) {
+      toast.error(`${error}`, { autoClose: 3000 });
+    }
   };
 
   return (
     <SignUpContainer>
+      {error ? <Notification /> : null}
       <Heading>Sign Up</Heading>
       <Form onSubmit={handleSubmit}>
         <FormInput
@@ -99,8 +108,12 @@ const SignUp = ({ signUpStart }) => {
   );
 };
 
+const MapStateToProps = createStructuredSelector({
+  error: selectError,
+});
+
 const MapDispatchToProps = (dispatch) => ({
   signUpStart: (signUpData) => dispatch(signUpStart(signUpData)),
 });
 
-export default connect(null, MapDispatchToProps)(SignUp);
+export default connect(MapStateToProps, MapDispatchToProps)(SignUp);

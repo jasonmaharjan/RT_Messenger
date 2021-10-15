@@ -23,7 +23,7 @@ export const login = (email, password) =>
       }
     })
     .catch((error) => {
-      console.log(error);
+      console.log("API Error", error);
     });
 
 export const signup = ({ displayName, email, password, confirmPassword }) =>
@@ -45,7 +45,7 @@ export const signup = ({ displayName, email, password, confirmPassword }) =>
       }
     })
     .catch((error) => {
-      console.log(error);
+      console.log("API Error", error);
     });
 
 export const logout = (token) =>
@@ -64,7 +64,7 @@ export const logout = (token) =>
         window.location = "/login";
       }
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log("API Error", error));
 
 export const chatPage = (token) => {
   return axios({
@@ -81,7 +81,7 @@ export const chatPage = (token) => {
       localStorage.removeItem("token");
       localStorage.removeItem("userId");
       window.location = "/login";
-      console.log(err);
+      console.log("API Error", err);
     });
 };
 
@@ -98,7 +98,7 @@ export const getServerData = (token) => {
         return res.data.servers;
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log("API Error", err));
 };
 
 export const createServerData = (payload) => {
@@ -116,7 +116,7 @@ export const createServerData = (payload) => {
     .then((res) => {
       return res.data.serverData;
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log("API Error", error));
 };
 
 export const arrangeServers = (payload) => {
@@ -137,5 +137,5 @@ export const arrangeServers = (payload) => {
         return res.data.newServerList;
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log("API Error", err));
 };

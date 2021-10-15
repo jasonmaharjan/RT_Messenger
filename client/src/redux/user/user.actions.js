@@ -45,3 +45,7 @@ export const logOutFailure = (error) => ({
   type: UserActionTypes.LOG_OUT_FAILURE,
   payload: error,
 });
+
+export const resetError = () => ({
+  type: UserActionTypes.RESET_ERROR,
+});

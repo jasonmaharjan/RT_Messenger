@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { logInStart } from "../redux/user/user.actions";
+import { logInStart, resetError } from "../redux/user/user.actions";
+import { selectError } from "../redux/user/user.selectors";
+import { createStructuredSelector } from "reselect";
+import { toast } from "react-toastify";
 
 import FormInput from "../components/formInput";
 import Button from "../components/button";
-import NotificationPopup from "../components/notification";
 
 import { LoginContainer } from "../styles/Container";
 import { Form } from "../styles/Form";
 import { Heading, Text, HrefLink } from "../styles/Text";
+import { Notification } from "../styles/Notification";
+import "react-toastify/dist/ReactToastify.css";
 
-const Login = ({ logInStart }) => {
+const Login = ({ logInStart, error, resetError }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -40,11 +44,15 @@ const Login = ({ logInStart }) => {
       password,
     };
     logInStart(emailAndPassword);
+    console.log(error);
+    if (error) {
+      return toast.error(`${error}`, { autoClose: 3000 });
+    }
   };
 
   return (
     <LoginContainer>
-      <NotificationPopup message="Incorrect Credentials!" />
+      {error ? <Notification /> : null}
       <Heading>Login</Heading>
       <Form onSubmit={handleSubmit}>
         <FormInput
@@ -74,8 +82,13 @@ const Login = ({ logInStart }) => {
   );
 };
 
-const MapDispatchToProps = (dispatch) => ({
-  logInStart: (emailAndPassword) => dispatch(logInStart(emailAndPassword)),
+const MapStateToProps = createStructuredSelector({
+  error: selectError,
 });
 
-export default connect(null, MapDispatchToProps)(Login);
+const MapDispatchToProps = (dispatch) => ({
+  logInStart: (emailAndPassword) => dispatch(logInStart(emailAndPassword)),
+  resetError: () => dispatch(resetError()),
+});
+
+export default connect(MapStateToProps, MapDispatchToProps)(Login);
