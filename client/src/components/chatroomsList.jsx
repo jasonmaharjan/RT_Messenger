@@ -7,8 +7,11 @@ import {
   ChatRoomList,
   UserRow,
   UserName,
-  UserStatus,
+  IconDiv,
 } from "../styles/ChatRoomsCol";
+
+import { MembersImage, MembersStatus } from "../styles/MembersCol";
+import { SettingsIcon } from "../styles/SettingsIcon.js";
 
 const ChatRooms = () => {
   const chatrooms = [
@@ -30,6 +33,10 @@ const ChatRooms = () => {
     console.log("chatroom clicked");
   };
 
+  const handleSettingsClicked = () => {
+    // open modal to edit settings
+  };
+
   return (
     <>
       <ServerName>Pida Inducing Group</ServerName>
@@ -43,8 +50,13 @@ const ChatRooms = () => {
       </ChatRoomList>
 
       <UserRow>
+        <MembersImage status="online">
+          <MembersStatus status="online" />
+        </MembersImage>
         <UserName>Braxton</UserName>
-        <UserStatus />
+        <IconDiv>
+          <SettingsIcon onClick={handleSettingsClicked} />
+        </IconDiv>
       </UserRow>
     </>
   );

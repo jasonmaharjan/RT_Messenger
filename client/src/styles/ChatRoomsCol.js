@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import settingsIcon from "../images/settings.svg";
 
 export const ServerName = styled.div`
   margin: 0 1.5rem;
@@ -51,12 +52,12 @@ export const ChatRoomBtn = styled.button`
 export const UserRow = styled.div`
   grid-row: 3 / 4;
   min-height: 3rem;
-  width: 100%;
+  min-width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border: none;
-  padding: 0 2rem;
+  padding: 0 1rem;
   background-color: var(--grey-hover);
   font-family: inherit;
   font-size: 1rem;
@@ -65,7 +66,8 @@ export const UserRow = styled.div`
 
 export const UserName = styled.span`
   color: var(--primary);
-  margin-right: 1rem;
+  width: 100%;
+  margin: 0 1rem;
 
   &:hover {
     cursor: pointer;
@@ -81,4 +83,10 @@ export const UserStatus = styled.span`
   width: 0.5rem;
   background-color: var(--green);
   border-radius: 50%;
+`;
+
+export const IconDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
