@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { connect } from "react-redux";
-import { signUpStart } from "../redux/user/user.actions";
+import { signUpStart, resetError } from "../redux/user/user.actions";
 import { selectError } from "../redux/user/user.selectors";
 import { createStructuredSelector } from "reselect";
 import { toast } from "react-toastify";
@@ -15,34 +15,19 @@ import { Heading, Text, HrefLink } from "../styles/Text";
 import { Notification } from "../styles/Notification";
 import "react-toastify/dist/ReactToastify.css";
 
-const SignUp = ({ signUpStart, error }) => {
-  const [displayName, setDisplayName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+const SignUp = ({ signUpStart, error, resetError }) => {
+  const [formValues, setFormValues] = useState({
+    displayName: "",
+    email: "",
+    password: "",
+    setPassword: "",
+  });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    switch (name) {
-      case "displayName":
-        setDisplayName(value);
-        break;
-
-      case "email":
-        setEmail(value);
-        break;
-
-      case "password":
-        setPassword(value);
-        break;
-
-      case "confirmPassword":
-        setConfirmPassword(value);
-        break;
-
-      default:
-        console.log("Login form fill up");
-    }
+  const handleChange = (e) => {
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -50,10 +35,10 @@ const SignUp = ({ signUpStart, error }) => {
   };
 
   const handleClick = () => {
-    const signUpData = { displayName, email, password, confirmPassword };
-    signUpStart(signUpData);
+    signUpStart(formValues);
     if (error) {
       toast.error(`${error}`, { autoClose: 3000 });
+      resetError();
     }
   };
 
@@ -66,7 +51,7 @@ const SignUp = ({ signUpStart, error }) => {
           name="displayName"
           type="string"
           placeholder="Display Name"
-          value={displayName}
+          value={formValues.displayName}
           handleChange={handleChange}
           required
         />
@@ -75,7 +60,7 @@ const SignUp = ({ signUpStart, error }) => {
           name="email"
           type="email"
           placeholder="Email"
-          value={email}
+          value={formValues.email}
           handleChange={handleChange}
           required
         />
@@ -83,7 +68,7 @@ const SignUp = ({ signUpStart, error }) => {
         <FormInput
           name="password"
           type="password"
-          value={password}
+          value={formValues.password}
           placeholder="Password"
           handleChange={handleChange}
           required
@@ -92,7 +77,7 @@ const SignUp = ({ signUpStart, error }) => {
         <FormInput
           name="confirmPassword"
           type="password"
-          value={confirmPassword}
+          value={formValues.confirmPassword}
           placeholder="Confirm Password"
           handleChange={handleChange}
           required
@@ -114,6 +99,7 @@ const MapStateToProps = createStructuredSelector({
 
 const MapDispatchToProps = (dispatch) => ({
   signUpStart: (signUpData) => dispatch(signUpStart(signUpData)),
+  resetError: () => dispatch(resetError()),
 });
 
 export default connect(MapStateToProps, MapDispatchToProps)(SignUp);

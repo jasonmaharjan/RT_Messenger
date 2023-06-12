@@ -6,7 +6,6 @@ const fs = require("fs");
 require("dotenv").config();
 
 const MONGODB_URI = process.env.CONNECTION_STRING;
-console.log(MONGODB_URI);
 
 const app = express();
 
@@ -20,8 +19,14 @@ app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, POST, PUT, PATCH, DELETE");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+    );
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Content-Type, Authorization"
+    );
     next();
 });
 
@@ -35,6 +40,6 @@ app.use((req, res, next) => {
 mongoose
     .connect(MONGODB_URI)
     .then(() => {
-        app.listen(8080);
+        app.listen(3001);
     })
-    .catch((error) => console.log(error));
+    .catch(error => console.log(error));

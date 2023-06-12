@@ -15,23 +15,12 @@ import { Notification } from "../styles/Notification";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = ({ logInStart, error, resetError }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    switch (name) {
-      case "email":
-        setEmail(value);
-        break;
-
-      case "password":
-        setPassword(value);
-        break;
-
-      default:
-        console.log("Login form fill up");
-    }
+  const [formValues, setFormValues] = useState({ email: "", password: "" });
+  const handleChange = (e) => {
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -39,14 +28,10 @@ const Login = ({ logInStart, error, resetError }) => {
   };
 
   const handleClick = () => {
-    const emailAndPassword = {
-      email,
-      password,
-    };
-    logInStart(emailAndPassword);
-    console.log(error);
+    logInStart(formValues);
     if (error) {
-      return toast.error(`${error}`, { autoClose: 3000 });
+      toast.error(`${error}`, { autoClose: 3000 });
+      resetError();
     }
   };
 
@@ -58,7 +43,7 @@ const Login = ({ logInStart, error, resetError }) => {
         <FormInput
           name="email"
           type="email"
-          value={email}
+          value={formValues.email}
           placeholder="Email"
           handleChange={handleChange}
           required
@@ -67,7 +52,7 @@ const Login = ({ logInStart, error, resetError }) => {
         <FormInput
           name="password"
           type="password"
-          value={password}
+          value={formValues.password}
           placeholder="Password"
           handleChange={handleChange}
           required
