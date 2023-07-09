@@ -13,3 +13,5 @@ export const selectIsUserFetching = createSelector(
 );
 
 export const selectError = createSelector([selectUser], (user) => user.error);
+
+export const selectCurrentServer = createSelector([selectUser], (user) => user.selectedServer)

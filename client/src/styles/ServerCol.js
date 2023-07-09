@@ -49,7 +49,7 @@ export const ServerName = styled.span`
 export const ServerSelect = styled.div`
   position: fixed;
   height: 3rem;
-  top: ${(props) => props.theme.serverPosition}px;
+  top: ${(props) => props.theme.selectedServerPosition}px;
   border-radius: 2rem;
   width: 0.15rem;
   background-color: var(--primary);

@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   currentUser: null,
   error: null,
   isUserFetching: false,
+  selectedServer: null
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -43,6 +44,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
         error: action.payload,
         isUserFetching: false,
       };
+
+    case UserActionTypes.SET_SELECTED_SERVER:
+      return {
+        ...state,
+        selectedServer: action.payload
+      }
 
     case UserActionTypes.RESET_ERROR:
       return {

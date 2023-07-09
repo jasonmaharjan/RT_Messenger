@@ -39,6 +39,20 @@ const GlobalStyles = createGlobalStyle`
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       background-color: var(--background);
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--background);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 2rem;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
     }
     
     code {

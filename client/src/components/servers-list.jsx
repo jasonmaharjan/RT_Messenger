@@ -10,6 +10,8 @@ import {
   toggleCreateServer,
   arrangeServerList,
 } from "../redux/server/server.actions";
+import { setSelectedServer } from "../redux/user/user.actions";
+import { selectCurrentServer } from "../redux/user/user.selectors";
 
 import { ThemeProvider } from "styled-components";
 
@@ -26,10 +28,14 @@ const ServersList = ({
   getServerData,
   toggleCreateServer,
   serverAdded,
+  selectedServer,
+  setCurrentServerAsSelected,
 }) => {
   const token = localStorage.getItem("token");
-  const [serverSelected, setServerSelected] = useState(false);
-  const [serverPosition, setServerPosition] = useState(null);
+  const [serverSelected, setServerSelected] = useState(
+    selectedServer || { serverId: null, position: null }
+  );
+  // const [selectedServerPosition, setSelectedServerPosition] = useState(null);
 
   // create an array of refs for the servers
   const serverRefs = useRef(servers.map(() => React.createRef())); // e.g. {current: [0: {current}, 1: {current}]}
@@ -40,19 +46,25 @@ const ServersList = ({
     }
   }, []);
 
+  // set the current server selected on page load
+  // useEffect(() => {
+  //   setSelectedServerPosition(77.3125);
+  //   setServerSelected(true);
+  // }, []);
+
   useEffect(() => {
     if (serverAdded) {
+      setSelectedServer();
       window.location.reload();
     }
   }, [serverAdded]);
 
-  const handleClick = (index) => {
-    if (serverRefs.current) {
-      setServerPosition(
-        serverRefs.current[index].current.getBoundingClientRect().y
-      );
-    }
-    setServerSelected(true);
+  const handleClick = (server, index) => {
+    const yPosition =
+      serverRefs.current[index].current.getBoundingClientRect().y;
+    const payload = { serverId: server._id, position: yPosition };
+    setServerSelected(payload);
+    setCurrentServerAsSelected(payload);
   };
 
   const handleCreateServer = () => {
@@ -73,13 +85,13 @@ const ServersList = ({
   };
 
   const theme = {
-    serverPosition: serverPosition,
+    selectedServerPosition: selectedServer.position,
   };
 
   return (
     <ThemeProvider theme={theme}>
       {serverSelected ? (
-        <ServerSelect position={serverPosition}>{""}</ServerSelect>
+        <ServerSelect position={selectedServer.position}>{""}</ServerSelect>
       ) : null}
 
       <ServersListContainer>
@@ -87,7 +99,7 @@ const ServersList = ({
           ? servers.map((server, index) => (
               <Servers key={index}>
                 <ServerBtn
-                  onClick={() => handleClick(index)}
+                  onClick={() => handleClick(server, index)}
                   ref={serverRefs.current[index]}
                 >
                   {getServerAbv(server.serverName)}
@@ -106,12 +118,14 @@ const ServersList = ({
 const MapStateToProps = createStructuredSelector({
   servers: selectServer,
   serverAdded: selectServerAdded,
+  selectedServer: selectCurrentServer,
 });
 
 const MapDispatchToProps = (dispatch) => ({
   getServerData: (token) => dispatch(getServerData(token)),
   toggleCreateServer: () => dispatch(toggleCreateServer()),
   arrangeServerList: (data) => dispatch(arrangeServerList(data)),
+  setCurrentServerAsSelected: (server) => dispatch(setSelectedServer(server)),
 });
 
 export default connect(MapStateToProps, MapDispatchToProps)(ServersList);

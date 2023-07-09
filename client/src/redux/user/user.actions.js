@@ -49,3 +49,9 @@ export const logOutFailure = (error) => ({
 export const resetError = () => ({
   type: UserActionTypes.RESET_ERROR,
 });
+
+// set the selected server
+export const setSelectedServer = (server) => ({
+  type: UserActionTypes.SET_SELECTED_SERVER,
+  payload: server
+});
